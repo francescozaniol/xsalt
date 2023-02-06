@@ -433,9 +433,11 @@
         };
       </xsl:variable>
 
-      <xsl:element name="script" namespace=""
-        ><xsl:value-of select="normalize-space($js-def)"
-      /></xsl:element>
+      <xsl:if test="//x-component/script[@custom-element or @autoselect]">
+        <xsl:element name="script" namespace=""
+          ><xsl:value-of select="normalize-space($js-def)"
+        /></xsl:element>
+      </xsl:if>
 
       <xsl:if test="ext:node-set($x-store)/@x-js = 'true' or ext:node-set($x-store)//*/@x-js = 'true'">
         <xsl:element name="script" namespace="">
@@ -461,32 +463,34 @@
         )
       ]"><xsl:copy-of select="./*" /></xsl:for-each>
 
-      <xsl:element name="script" namespace="">
-        <xsl:for-each select="//x-component/script[
-          not(@x-component-orig-tag=preceding::script/@x-component-orig-tag)
-        ]">
-          <xsl:sort select="position()" data-type="number" order="descending" />
-          <xsl:choose>
-            <xsl:when test="starts-with(./@autoselect, 'true')">
-              window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var _this=this;<xsl:value-of select="." />};
-              window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
-                <xsl:when test="starts-with(./@autoselect, 'true|')">
-                  <xsl:variable name="wrapper">
-                    <xsl:call-template name="string-replace-all">
-                      <xsl:with-param name="text" select="./@autoselect" />
-                      <xsl:with-param name="replace">true|</xsl:with-param>
-                      <xsl:with-param name="by"></xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:variable><xsl:value-of select="$wrapper"/>
-                </xsl:when>
-                <xsl:otherwise>null</xsl:otherwise>
-              </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(e){window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].call(e)});
-            </xsl:when>
-            <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
-            <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
-          </xsl:choose>
-        </xsl:for-each>
-      </xsl:element>
+      <xsl:if test="//x-component/script">
+        <xsl:element name="script" namespace="">
+          <xsl:for-each select="//x-component/script[
+            not(@x-component-orig-tag=preceding::script/@x-component-orig-tag)
+          ]">
+            <xsl:sort select="position()" data-type="number" order="descending" />
+            <xsl:choose>
+              <xsl:when test="starts-with(./@autoselect, 'true')">
+                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var _this=this;<xsl:value-of select="." />};
+                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
+                  <xsl:when test="starts-with(./@autoselect, 'true|')">
+                    <xsl:variable name="wrapper">
+                      <xsl:call-template name="string-replace-all">
+                        <xsl:with-param name="text" select="./@autoselect" />
+                        <xsl:with-param name="replace">true|</xsl:with-param>
+                        <xsl:with-param name="by"></xsl:with-param>
+                      </xsl:call-template>
+                    </xsl:variable><xsl:value-of select="$wrapper"/>
+                  </xsl:when>
+                  <xsl:otherwise>null</xsl:otherwise>
+                </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(e){window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].call(e)});
+              </xsl:when>
+              <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
+              <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:element>
+      </xsl:if>
 
     </xsl:copy>
   </xsl:template>
