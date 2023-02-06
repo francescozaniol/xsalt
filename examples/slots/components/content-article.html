@@ -1,0 +1,21 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="content-article" mode="x-component">
+
+  <template>
+    <article class="article">
+
+      <x-slot name="heading">
+        <h1 class="article__heading">
+          <x-slot-content />
+        </h1>
+      </x-slot>
+
+      <div class="article__body">
+        <x-slot />
+      </div>
+
+    </article>
+  </template>
+
+</xsl:template>
+</xsl:transform>

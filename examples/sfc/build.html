@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>/**/ .counter-button { font-size: 2em; margin: 20px; } /**/</style>
+</head>
+<body>
+<button class="counter-button" type="button">0</button><script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script><script>(function(){/**/
+    var $button = $('.counter-button');
+    $button.on('click', function () {
+      this.innerHTML = Number.parseInt(this.innerHTML) + 1;
+    });
+  /**/}());</script>
+</body>
+</html>
