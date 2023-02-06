@@ -26,7 +26,7 @@ class Xsalt {
 
     if ( !$xslHref ) return;
 
-    $xsl->load($xslHref);
+    $xsl->load(dirname(realpath($src))."/$xslHref");
 
     if ( $_GET['xsalt_debug'] === 'true' ) {
       libxml_use_internal_errors(true);
