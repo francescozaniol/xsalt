@@ -67,6 +67,7 @@ result:
 - [Slots](./examples/slots): default and named slots.
 - Auto-bem & auto-select: Easy BEM-like syntax automatically added by xsalt + Easy JS nodes' auto-selection.`Docs:TODO/Feature:Available`
 - X-store: a store available globally, kinda like pinia/vuex.`Docs:TODO/Feature:Available`
+- Xsalt.php: a simple PHP class to render or build a transformation.`Docs:TODO/Feature:Available`
 - Custom-elements: dynamic JS custom elements from xsalt components.`Docs:TODO/Feature:Available`
 
 ## Status
