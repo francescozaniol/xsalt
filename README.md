@@ -61,6 +61,14 @@ result:
 </html>
 ```
 
+## Features
+- [The basics](./examples/basic): the example you've just read, explained.
+- [Single-File Components](./examples/sfc): inspired by Vue's `template`, `script` and `style` tags.
+- [Slots](./examples/slots): default and named slots.
+- Auto-bem & auto-select: Easy BEM-like syntax automatically added by xsalt + Easy JS nodes' auto-selection.`Docs:TODO/Feature:Available`
+- X-store: a store available globally, kinda like pinia/vuex.`Docs:TODO/Feature:Available`
+- Custom-elements: dynamic JS custom elements from xsalt components.`Docs:TODO/Feature:Available`
+
 ## Status
 I use xsalt for static minisites. It works fine but I'd consider it in beta.
 
