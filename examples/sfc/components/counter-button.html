@@ -6,7 +6,7 @@
   </template>
 
   <script>/*<![CDATA[*/
-    var $button = $('.counter-button');
+    var $button = window.$('.counter-button');
     $button.on('click', function () {
       this.innerHTML = Number.parseInt(this.innerHTML) + 1;
     });
