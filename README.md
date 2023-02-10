@@ -11,7 +11,7 @@ I use xsalt for static minisites.
 ## Example
 index.xhtml:
 ```html
-<?xml version='1.0'?>
+<?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
 <html>
   <head />
