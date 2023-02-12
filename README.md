@@ -4,7 +4,7 @@ Kinda like Vue, but written in XSLT
 ## Tell me more
 With xsalt you can define Vue-like components, which are used to transform XML tags.
 
-xsalt does not need complex tooling such as webpack or vite, a simple PHP script is sufficient to render/build web pages.
+xsalt does not need complex tooling such as webpack or vite, a simple PHP script is sufficient to render/build web pages. XSLT is also natively understood by browsers, so components may be transformed on the fly.
 
 I use xsalt for static minisites.
 
@@ -62,6 +62,8 @@ result:
   </body>
 </html>
 ```
+
+See [live example](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/index.xhtml) or [build example](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/build.html)
 
 ## Features
 - [The basics](./examples/basic): the example you've just read, explained.

@@ -12,4 +12,4 @@ Usage [example in this codebase here](../../examples/build-examples.php)
 Append `?xsalt_debug=true` to the URL to enable debugging; this makes it easier to spot errors in your XSLT code.
 
 ## Did you know
-By the way, did you know that XSLT is natively supported by browsers? This means that the browser itself is able to transform xsalt components on-the-fly (try opening index.xhtml). Unfortunately XSLT is not understood by SEO crawlers.
+Did you know that XSLT is natively supported by browsers? This means that the browser itself is able to transform xsalt components on the fly, without the need of additional tools like this one. Unfortunately XSLT is not understood by SEO crawlers therefore this might not be a viable option for most projects.

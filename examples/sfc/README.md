@@ -7,7 +7,7 @@ xsalt is heavily inspired by Vue, and it has a similar usage of the `template`, 
 - The `style` block is injected at the end of the `head` tag.
 - The `insertAdjacentHTML` can be used to inject tags (usually dependencies) into the `head` or `body`. In this example the `reset.min.css` and `jquery` dependencies are injected. Note that `tagName` can receive `head` or `body`; `position`, for now, supports only `beforeend`.
 
-See [live build here](https://htmlpreview.github.io/?https://github.com/francescozaniol/xsalt/blob/master/examples/sfc/build.html)
+See [live example](https://raw.githack.com/francescozaniol/xsalt/master/examples/sfc/index.xhtml) or [build example](https://raw.githack.com/francescozaniol/xsalt/master/examples/sfc/build.html)
 
 Few other important notes:
 - See how `style` and `script` are wrapped by the ugly `/*<![CDATA[*/ ... /*]]>*/`? This is needed to escape special XML characters: without CDATA the inclusion of, for example, this code: `if(condition1 && condition2) {...}` would break the parser because `&` is a special charater in XML.

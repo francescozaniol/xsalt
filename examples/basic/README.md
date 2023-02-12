@@ -9,4 +9,4 @@ As for line 2 of [hello-world](./components/hello-world.html):
 - The `match` attribute defines the tag of the component.
 - The `mode="x-component"` attribute is needed by xsalt.
 
-See [live build here](https://htmlpreview.github.io/?https://github.com/francescozaniol/xsalt/blob/master/examples/basic/build.html)
+See [live example](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/index.xhtml) or [build example](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/build.html)
