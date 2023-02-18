@@ -139,9 +139,9 @@
 
     <xsl:variable name="bemmed-class-init">
       <xsl:choose>
-        <xsl:when test="starts-with(./@class, '$')"><xsl:value-of select="concat(
+        <xsl:when test="starts-with(./@class, '__')"><xsl:value-of select="concat(
           $block-prefix,
-          substring(./@class,2)
+          substring(./@class,3)
         )" /></xsl:when>
         <xsl:otherwise><xsl:value-of select="./@class" /></xsl:otherwise>
       </xsl:choose>
@@ -158,7 +158,7 @@
     <xsl:variable name="bemmed-class-init-3">
       <xsl:call-template name="string-replace-all">
         <xsl:with-param name="text" select="$bemmed-class-init-2" />
-        <xsl:with-param name="replace">^$</xsl:with-param>
+        <xsl:with-param name="replace">^__</xsl:with-param>
         <xsl:with-param name="by" select="concat(
           ' ',
           $block-prefix
@@ -518,7 +518,7 @@
         ]">
           <xsl:variable name="style-content">
             <xsl:choose>
-              <xsl:when test="./@autobem = 'true' or ./@autobem = 'safe'">
+              <xsl:when test="./@autobem = 'true' or ./@autobem = 'block-only'">
                 <xsl:variable name="autobem-1">
                   <xsl:call-template name="string-replace-all">
                     <xsl:with-param name="text" select="." />
@@ -529,7 +529,7 @@
                 <xsl:variable name="autobem-2">
                   <xsl:call-template name="string-replace-all">
                     <xsl:with-param name="text" select="$autobem-1" />
-                    <xsl:with-param name="replace">.$</xsl:with-param>
+                    <xsl:with-param name="replace">.__</xsl:with-param>
                     <xsl:with-param name="by" select="concat(
                       '.' ,
                       concat(./@x-component-orig-tag , '__')
@@ -540,7 +540,7 @@
                   <xsl:when test="./@autobem = 'true'">
                     <xsl:value-of select="$autobem-2" />
                   </xsl:when>
-                  <xsl:when test="./@autobem = 'safe'">
+                  <xsl:when test="./@autobem = 'block-only'">
                     <xsl:value-of select="$autobem-1" />
                   </xsl:when>
                 </xsl:choose>
