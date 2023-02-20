@@ -5,6 +5,7 @@ $dirs = [
   'basic',
   'slots',
   'sfc',
+  'autobem',
 ];
 
 foreach ($dirs as $dir) {
