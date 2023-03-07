@@ -5,7 +5,7 @@ Xsalt scopes the code for you with [BEM](https://getbem.com).
 ## Template autobem
 
 If `autobem="true"` is assigned to the `template` tag, xsalt will:
-1. Add the matched tag to the class of the "root" wrapper (this represents the "Block" in Block-Element-Modifier).
+1. Add the matched tag (in this example `blog-article`) to the class of the "root" wrapper.
 2. Prepend the matched tag to any class starting with `__`.
 
 For example, this is [blog-article.html](./components/blog-article.html)'s template definition:
