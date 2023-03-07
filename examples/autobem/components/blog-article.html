@@ -3,17 +3,8 @@
 
   <template autobem="true">
     <article>
-
-      <x-slot name="heading">
-        <h1 class="__heading">
-          <x-slot-content />
-        </h1>
-      </x-slot>
-
-      <div class="__content">
-        <x-slot />
-      </div>
-
+      <h1 class="__heading">Title</h1>
+      Content
     </article>
   </template>
 
@@ -24,12 +15,7 @@
       border: 1px solid #999;
     }
     .__heading {
-      font-size: 2em;
-      font-weight: bold;
       margin: 0 0 1em 0;
-    }
-    .__content {
-      font-size: 1em;
     }
   </style>
 

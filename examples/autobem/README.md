@@ -1,24 +1,28 @@
 # Auto BEM
 
-## template autobem
+Xsalt scopes the code for you with [BEM](https://getbem.com).
+
+## Template autobem
 
 If `autobem="true"` is assigned to the `template` tag, xsalt will:
-1. Add the matched tag as the class of the "root" wrapper. This represents the "Block" in Block-Element-Modifier (in this case `blog-article`).
-2. Prepend `blog-article` to any class starting with `__`.
+1. Add the matched tag to the class of the "root" wrapper (this represents the "Block" in Block-Element-Modifier).
+2. Prepend the matched tag to any class starting with `__`.
 
-Example:
-```xml
+For example, this is [blog-article.html](./components/blog-article.html)'s template definition:
+```html
 <xsl:template match="blog-article" mode="x-component">
+
   <template autobem="true">
     <article>
       <h1 class="__heading">Title</h1>
       Content
     </article>
-  <template>
+  </template>
+
 </xsl>
 ```
 
-Output:
+And this is the output code:
 ```html
 <article class="blog-article">
   <h1 class="blog-article__heading">Title</h1>
@@ -26,36 +30,42 @@ Output:
 </article>
 ```
 
-## style autobem
+## Style autobem
 
 If `autobem="true"` is assigned to the `style` tag, xsalt will:
-1. Replace any `{$}` with `blog-article`.
+1. Replace any `{$}` with the matched tag (in this example `blog-article`).
 2. Replace any `.__` with `.blog-article__`.
 
-Example:
-```xml
+This is [blog-article.html](./components/blog-article.html)' style definition:
+```html
 <xsl:template match="blog-article" mode="x-component">
+
   <style autobem="true">
     .{$} {
+      max-width: 20em;
       padding: 1em;
+      border: 1px solid #999;
     }
     .__heading {
-      font-size: 2em;
+      margin: 0 0 1em 0;
     }
-  <style>
+  </style>
+
 </xsl>
 ```
 
-Output:
+Output code:
 ```css
 .blog-article {
+  max-width: 20em;
   padding: 1em;
+  border: 1px solid #999;
 }
 .blog-article__heading {
-  font-size: 2em;
+  margin: 0 0 1em 0;
 }
 ```
 
-## Complete example
+## Demo
 
-See [code example](./components/blog-article.html) and [live example](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/index.xhtml) or [build example](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/build.html).
+See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/build.html).

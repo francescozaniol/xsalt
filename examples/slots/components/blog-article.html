@@ -1,16 +1,16 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<xsl:template match="content-article" mode="x-component">
+<xsl:template match="blog-article" mode="x-component">
 
   <template>
-    <article class="article">
+    <article class="blog-article">
 
       <x-slot name="heading">
-        <h1 class="article__heading">
+        <h1 class="blog-article__heading">
           <x-slot-content />
         </h1>
       </x-slot>
 
-      <div class="article__body">
+      <div class="blog-article__content">
         <x-slot />
       </div>
 

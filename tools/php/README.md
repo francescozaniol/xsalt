@@ -2,7 +2,7 @@
 This is a simple utility class to use with xsalt. Usage example:
 
 ```php
-Xsalt::render('./index.xhtml'); // renders to standard output; useful in development of if your server runs PHP
+Xsalt::render('./index.xhtml'); // renders to standard output; useful in development or if your server runs PHP
 Xsalt::build('./index.xhtml', './index.html') // builds to static code and writes to ./index.html; useful for serving static pages
 ```
 
