@@ -1,0 +1,16 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="blog-articles" mode="x-component">
+
+  <template>
+    <div>
+      <xsl:for-each select="$x-store/articles/article">
+        <blog-article>
+          <template x-slot="heading"><xsl:value-of select="./heading" /></template>
+          <xsl:copy-of select="./content" />
+        </blog-article>
+      </xsl:for-each>
+    </div>
+  </template>
+
+</xsl:template>
+</xsl:transform>
