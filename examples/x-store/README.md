@@ -79,10 +79,6 @@ Finally, this is how the component [blog-articles.html](./components/blog-articl
 </xsl:transform>
 ```
 
-Notes:
-- `xsl:value-of` prints the text of the node.
-- `xsl:copy-of` prints the HTML content of the node.
-
 ## Demo
 
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/x-store/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/x-store/build.html).
