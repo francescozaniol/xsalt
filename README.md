@@ -71,7 +71,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 - [Slots](./examples/slots): default and named slots.
 - [Auto BEM](./examples/autobem): BEM-like classes automatically added by xsalt.
 - auto-select: Easy JS nodes auto-selection.`Docs:TODO/Feature:Available`
-- X-store: a store available globally.`Docs:TODO/Feature:Available`
+- [X-store](./examples/x-store): global data store.
 - [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
 - AlpineJS integration.`Docs:TODO/Feature:Available`
 - XSL basics: Cool stuff you can do with XSL.`Docs:TODO`
