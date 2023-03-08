@@ -433,22 +433,22 @@
         };
       </xsl:variable>
 
-      <xsl:if test="//x-component/script[@custom-element or @autoselect]">
+      <xsl:if test="//x-component/script[@custom-element or @autoselect] or //x-store">
         <xsl:element name="script" namespace=""
           ><xsl:value-of select="normalize-space($js-def)"
         /></xsl:element>
       </xsl:if>
 
-      <xsl:if test="ext:node-set($x-store)/@x-js = 'true' or ext:node-set($x-store)//*/@x-js = 'true'">
+      <xsl:if test="ext:node-set($x-store)/@x-store-js = 'true' or ext:node-set($x-store)//*/@x-store-js = 'true'">
         <xsl:element name="script" namespace="">
           <xsl:attribute name="type" namespace="">application/xml</xsl:attribute>
           <xsl:attribute name="id" namespace="">xsalt-x-store</xsl:attribute>
           <xsl:choose>
-            <xsl:when test="ext:node-set($x-store)/@x-js = 'true'">
-              <xsl:apply-templates select="ext:node-set($x-store)/*" mode="xstore-js" />
+            <xsl:when test="ext:node-set($x-store)/@x-store-js = 'true'">
+              <xsl:apply-templates select="ext:node-set($x-store)/*" mode="x-store-js" />
             </xsl:when>
             <xsl:otherwise>
-              <xsl:apply-templates select="ext:node-set($x-store)//*[@x-js = 'true'][1]" mode="xstore-js" />
+              <xsl:apply-templates select="ext:node-set($x-store)//*[@x-store-js = 'true'][1]" mode="x-store-js" />
             </xsl:otherwise>
           </xsl:choose>
         </xsl:element>
@@ -651,12 +651,12 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="@*|node()" mode="xstore-js">
+  <xsl:template match="@*|node()" mode="x-store-js">
     <xsl:copy>
-      <xsl:apply-templates select="@*|node()" mode="xstore-js"/>
+      <xsl:apply-templates select="@*|node()" mode="x-store-js"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="script" mode="xstore-js" />
-  <xsl:template match="@x-js" mode="xstore-js" />
+  <xsl:template match="script" mode="x-store-js" />
+  <xsl:template match="@x-store-js" mode="x-store-js" />
 
 </xsl:stylesheet>
