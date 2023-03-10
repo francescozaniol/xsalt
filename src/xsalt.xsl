@@ -370,70 +370,75 @@
       </xsl:for-each>
 
       <xsl:variable name="js-def">
-        window.xsalt={
-          importXsl:function(url){
-            return new Promise(function(res,rej){
-              var xhr=new XMLHttpRequest();
-              xhr.open('GET',url,false);
-              xhr.onload=function(){
-                var xsl=xhr.responseXML;
-                window.xsalt.XSLTProcessor=new XSLTProcessor();
-                window.xsalt.XSLTProcessor.importStylesheet(xsl);
-                xsl=document.implementation.createDocument('','',null);
-                window.xsalt.DOMParser=new DOMParser();
-                window.xsalt.customElements.define([<xsl:for-each select="//x-component/script[
-                  @custom-element='true' and
-                  not(@x-component-orig-tag=preceding::script/@x-component-orig-tag)
-                ]"><xsl:sort select="position()" data-type="number" order="descending" />'<xsl:value-of select="@x-component-orig-tag" />',</xsl:for-each>]);
-                if(xhr.status>=200&amp;&amp;xhr.status&lt;300)res(xhr.response);
-                else rej({status:xhr.status,statusText:xhr.statusText});
-              };
-              xhr.onerror=function(){rej({status:xhr.status,statusText:xhr.statusText})};
-              xhr.send(null);
-            });
-          },
-          autoselect:function(tag,node,wrapper){
-            var r=[];
-            Array.prototype.slice.call(
-              node?[node]:document.getElementsByClassName(tag)
-            ).forEach(function(n,i){
-              r[i]={};
-              r[i].$=n;
-              var els=n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+']');
-              els.forEach(function(e){
-                Array.prototype.slice.call(e.classList).forEach(function(className){
-                  if(className.indexOf(tag+'__')!==0)return;
-                  var el=className.replace(tag+'__','$');
-                  if(!r[i][el])r[i][el]=e;
-                  else if(Array.isArray(r[i][el]))r[i][el].push(e);
-                  else r[i][el]=[r[i][el],e];
-                });
+        window.xsalt={};
+        <xsl:if test="//x-component/script[@autoselect]">
+        window.xsalt.autoselect=function(tag,node,wrapper){
+          var r=[];
+          Array.prototype.slice.call(
+            node?[node]:document.getElementsByClassName(tag)
+          ).forEach(function(n,i){
+            r[i]={};
+            r[i].$=n;
+            var els=n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+']');
+            els.forEach(function(e){
+              Array.prototype.slice.call(e.classList).forEach(function(className){
+                if(className.indexOf(tag+'__')!==0)return;
+                var el=className.replace(tag+'__','$');
+                if(!r[i][el])r[i][el]=e;
+                else if(Array.isArray(r[i][el]))r[i][el].push(e);
+                else r[i][el]=[r[i][el],e];
               });
-              if(wrapper)for(var e in r[i])r[i][e]=wrapper(r[i][e]);
             });
-            return r;
-          },
-          componentInit:{},
-          customElements:{
-            define:function(tag){
-              if(Array.isArray(tag)){tag.forEach(window.xsalt.customElements.define);return;}
-              if(window.customElements.get(tag))return;
-              window.customElements.define(tag,class extends HTMLElement{constructor(){super();
-              var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml');
-              var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc, document);
-              var node=fragment.firstElementChild;
-              this.parentNode.replaceChild(node,this);
-              window.xsalt.componentInit[tag]&amp;&amp;window.xsalt.autoselect(
-                tag,
-                node,
-                window.xsalt.componentInit[tag].wrapper
-              ).forEach(function(e){window.xsalt.componentInit[tag].call(e);});
-            }})}
-          },
+            if(wrapper)for(var e in r[i])r[i][e]=wrapper(r[i][e]);
+          });
+          return r;
         };
+        </xsl:if>
+        <xsl:if test="//x-component/script[@autoselect or @custom-element]">
+        window.xsalt.componentInit={};
+        </xsl:if>
+        <xsl:if test="//x-component/script[@custom-element]">
+        window.xsalt.importXsl=function(url){
+          return new Promise(function(res,rej){
+            var xhr=new XMLHttpRequest();
+            xhr.open('GET',url,false);
+            xhr.onload=function(){
+              var xsl=xhr.responseXML;
+              window.xsalt.XSLTProcessor=new XSLTProcessor();
+              window.xsalt.XSLTProcessor.importStylesheet(xsl);
+              xsl=document.implementation.createDocument('','',null);
+              window.xsalt.DOMParser=new DOMParser();
+              window.xsalt.customElements.define([<xsl:for-each select="//x-component/script[
+                @custom-element='true' and
+                not(@x-component-orig-tag=preceding::script/@x-component-orig-tag)
+              ]"><xsl:sort select="position()" data-type="number" order="descending" />'<xsl:value-of select="@x-component-orig-tag" />',</xsl:for-each>]);
+              if(xhr.status>=200&amp;&amp;xhr.status&lt;300)res(xhr.response);
+              else rej({status:xhr.status,statusText:xhr.statusText});
+            };
+            xhr.onerror=function(){rej({status:xhr.status,statusText:xhr.statusText})};
+            xhr.send(null);
+          });
+        };
+        window.xsalt.customElements={
+          define:function(tag){
+            if(Array.isArray(tag)){tag.forEach(window.xsalt.customElements.define);return;}
+            if(window.customElements.get(tag))return;
+            window.customElements.define(tag,class extends HTMLElement{constructor(){super();
+            var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml');
+            var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc, document);
+            var node=fragment.firstElementChild;
+            this.parentNode.replaceChild(node,this);
+            window.xsalt.componentInit[tag]&amp;&amp;window.xsalt.autoselect(
+              tag,
+              node,
+              window.xsalt.componentInit[tag].wrapper
+            ).forEach(function(e){window.xsalt.componentInit[tag].call(e);});
+          }})}
+        };
+        </xsl:if>
       </xsl:variable>
 
-      <xsl:if test="//x-component/script[@custom-element or @autoselect] or //x-store">
+      <xsl:if test="//x-component/script[@autoselect or @custom-element] or ext:node-set($x-store)/@x-store-js = 'true' or ext:node-set($x-store)//*/@x-store-js = 'true'">
         <xsl:element name="script" namespace=""
           ><xsl:value-of select="normalize-space($js-def)"
         /></xsl:element>
