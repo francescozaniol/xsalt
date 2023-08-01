@@ -524,32 +524,12 @@
         ]">
           <xsl:variable name="style-content">
             <xsl:choose>
-              <xsl:when test="./@autobem = 'true' or ./@autobem = 'block-only'">
-                <xsl:variable name="autobem-1">
-                  <xsl:call-template name="string-replace-all">
-                    <xsl:with-param name="text" select="." />
-                    <xsl:with-param name="replace">{$}</xsl:with-param>
-                    <xsl:with-param name="by" select="./@x-component-orig-tag"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="autobem-2">
-                  <xsl:call-template name="string-replace-all">
-                    <xsl:with-param name="text" select="$autobem-1" />
-                    <xsl:with-param name="replace">.__</xsl:with-param>
-                    <xsl:with-param name="by" select="concat(
-                      '.' ,
-                      concat(./@x-component-orig-tag , '__')
-                    )"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="./@autobem = 'true'">
-                    <xsl:value-of select="$autobem-2" />
-                  </xsl:when>
-                  <xsl:when test="./@autobem = 'block-only'">
-                    <xsl:value-of select="$autobem-1" />
-                  </xsl:when>
-                </xsl:choose>
+              <xsl:when test="./@autobem = 'true'">
+                <xsl:call-template name="string-replace-all">
+                  <xsl:with-param name="text" select="." />
+                  <xsl:with-param name="replace">\$\</xsl:with-param>
+                  <xsl:with-param name="by" select="./@x-component-orig-tag"/>
+                </xsl:call-template>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:value-of select="." />
