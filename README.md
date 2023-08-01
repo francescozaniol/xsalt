@@ -2,7 +2,7 @@
 Kinda like Vue, but written in XSLT
 
 ## About
-With xsalt you can define Vue-like components, which are used to transform XML into HTML.
+With xsalt you can define Vue-like components to transform XML/XHTML/RSS into HTML.
 
 Xsalt does not need complex tooling such as Webpack or Vite, a simple PHP script is sufficient to render/build web pages. XSLT is also natively understood by browsers, so components may be transformed on the fly without build tools.
 
@@ -73,9 +73,9 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 - [Auto select](./examples/autoselect): Easy JS nodes auto-selection.
 - [X-store](./examples/x-store): global data store.
 - [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
+- Custom-elements: dynamic JS custom elements from xsalt components.`Docs:TODO/Feature:Available`
 - AlpineJS integration.`Docs:TODO/Feature:Available`
 - XSL basics: Cool stuff you can do with XSL.`Docs:TODO`
-- Custom-elements: dynamic JS custom elements from xsalt components.`Docs:TODO/Feature:Available`
 
 ## Installation
 ```
