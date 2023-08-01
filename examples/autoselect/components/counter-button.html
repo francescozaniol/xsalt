@@ -1,0 +1,15 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="counter-button" mode="x-component">
+
+  <template>
+    <button class="$counterButton" type="button">0</button>
+  </template>
+
+  <script autoselect="true">
+    refs.$counterButton.addEventListener('click', function () {
+      this.innerHTML = Number.parseInt(this.innerHTML) + 1;
+    });
+  </script>
+
+</xsl:template>
+</xsl:transform>

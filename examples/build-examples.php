@@ -7,6 +7,7 @@ $dirs = [
   'sfc',
   'autobem',
   'x-store',
+  'autoselect',
 ];
 
 foreach ($dirs as $dir) {
