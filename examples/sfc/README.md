@@ -2,7 +2,7 @@
 
 Xsalt is heavily inspired by Vue, and it has a similar usage of the `template`, `style` and `script` tags.
 
-Have a look at [counter-button.html](./components/counter-button.html):
+For example, have a look at [counter-button.html](./components/counter-button.html):
 ```html
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:template match="counter-button" mode="x-component">

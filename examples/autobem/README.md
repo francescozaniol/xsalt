@@ -32,21 +32,19 @@ And this is the output code:
 
 ## Style autobem
 
-If `autobem="true"` is assigned to the `style` tag, xsalt will:
-1. Replace any `{$}` with the matched tag (in this example `blog-article`).
-2. Replace any `.__` with `.blog-article__`.
+If `autobem="true"` is assigned to the `style` tag, xsalt will replace any `\$\` with the matched tag (in this example "`blog-article`").
 
 This is [blog-article.html](./components/blog-article.html)' style definition:
 ```html
 <xsl:template match="blog-article" mode="x-component">
 
   <style autobem="true">
-    .{$} {
+    .\$\ {
       max-width: 20em;
       padding: 1em;
       border: 1px solid #999;
     }
-    .__heading {
+    .\$\__heading {
       margin: 0 0 1em 0;
     }
   </style>

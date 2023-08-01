@@ -1,6 +1,6 @@
 # The basics
 
-[index.xhtml](./index.xhtml) is the root XML file that will be transformed to HTML code:
+In this example [index.xhtml](./index.xhtml) is the root XML file that will be transformed to HTML code:
 ```html
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
@@ -34,11 +34,11 @@ It imports transformations via includes.xsl.
 <xsl:template match="hello-world" mode="x-component">
 
   <template>
-    <h1>Hello world</h1>
+    <h1 class="title">Hello world</h1>
   </template>
 
   <style>
-    h1 {
+    .title {
       color: blue;
     }
   </style>

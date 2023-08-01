@@ -2,9 +2,9 @@
 Kinda like Vue, but written in XSLT
 
 ## About
-With xsalt you can define Vue-like components, which are used to transform XML tags.
+With xsalt you can define Vue-like components, which are used to transform XML into HTML.
 
-Xsalt does not need complex tooling such as Webpack or Vite, a simple PHP script is sufficient to render/build web pages. XSLT is also natively understood by browsers, so components may be transformed on the fly.
+Xsalt does not need complex tooling such as Webpack or Vite, a simple PHP script is sufficient to render/build web pages. XSLT is also natively understood by browsers, so components may be transformed on the fly without build tools.
 
 I use xsalt for static minisites.
 
@@ -37,11 +37,11 @@ hello-world.html:
 <xsl:template match="hello-world" mode="x-component">
 
   <template>
-    <h1>Hello world</h1>
+    <h1 class="title">Hello world</h1>
   </template>
 
   <style>
-    h1 {
+    .title {
       color: blue;
     }
   </style>
@@ -55,10 +55,10 @@ result:
 <!DOCTYPE html>
 <html>
   <head>
-    <style>h1 { color: blue; }</style>
+    <style>.title { color: blue; }</style>
   </head>
   <body>
-    <h1>Hello world</h1>
+    <h1 class="title">Hello world</h1>
   </body>
 </html>
 ```

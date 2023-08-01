@@ -1,6 +1,6 @@
 # Slots
 
-[blog-article.html](./components/blog-article.html) shows how default and named slots are defined:
+In this example [blog-article.html](./components/blog-article.html) shows how default and named slots are defined:
 ```html
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:template match="blog-article" mode="x-component">
