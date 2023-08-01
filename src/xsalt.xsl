@@ -378,15 +378,16 @@
             node?[node]:document.getElementsByClassName(tag)
           ).forEach(function(n,i){
             r[i]={};
-            r[i].$=n;
-            var els=n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+']');
+            r[i].refs={};
+            r[i].refs.$=n;
+            var els=n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]');
             els.forEach(function(e){
               Array.prototype.slice.call(e.classList).forEach(function(className){
-                if(className.indexOf(tag+'__')!==0)return;
-                var el=className.replace(tag+'__','$');
-                if(!r[i][el])r[i][el]=e;
-                else if(Array.isArray(r[i][el]))r[i][el].push(e);
-                else r[i][el]=[r[i][el],e];
+                if(className.indexOf('$')!==0)return;
+                var el=className;
+                if(!r[i].refs[el])r[i].refs[el]=e;
+                else if(Array.isArray(r[i].refs[el]))r[i].refs[el].push(e);
+                else r[i].refs[el]=[r[i].refs[el],e];
               });
             });
             if(wrapper)for(var e in r[i])r[i][e]=wrapper(r[i][e]);
@@ -476,7 +477,7 @@
             <xsl:sort select="position()" data-type="number" order="descending" />
             <xsl:choose>
               <xsl:when test="starts-with(./@autoselect, 'true')">
-                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var _this=this;<xsl:value-of select="." />};
+                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var refs=this.refs;<xsl:value-of select="." />};
                 window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
                   <xsl:when test="starts-with(./@autoselect, 'true|')">
                     <xsl:variable name="wrapper">
