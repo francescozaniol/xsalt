@@ -93,8 +93,11 @@
               </xsl:element>
             </xsl:variable>
 
+            <xsl:variable name="x-component-scope">
+              <xsl:apply-templates select="ext:node-set($x-component)" mode="scope" />
+            </xsl:variable>
             <xsl:variable name="x-component-bem">
-              <xsl:apply-templates select="ext:node-set($x-component)" mode="bem" />
+              <xsl:apply-templates select="ext:node-set($x-component-scope)" mode="bem" />
             </xsl:variable>
             <xsl:variable name="x-component-aaa">
               <xsl:apply-templates select="ext:node-set($x-component-bem)" mode="aaa" />
@@ -115,6 +118,30 @@
   <xsl:template match="@*|node()" mode="x-component">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()" mode="x-component" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- ========= scope ========= -->
+
+  <xsl:template match="@*|node()" mode="scope">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" mode="scope" />
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="x-component[starts-with(./script/@autoselect, 'true')]/template/*" mode="scope">
+    <xsl:copy>
+      <xsl:copy-of select="./@*" />
+      <xsl:attribute name="data-x-{ancestor::x-component[1]/@x-component-orig-tag}-id"><xsl:value-of select="ancestor::x-component[1]/@x-component-id"/></xsl:attribute>
+      <xsl:apply-templates mode="scope" />
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="x-component[starts-with(./script/@autoselect, 'true')]/template/*//*[@class]" mode="scope">
+    <xsl:copy>
+      <xsl:copy-of select="./@*" />
+      <xsl:attribute name="data-x-{ancestor::x-component[1]/@x-component-id}"></xsl:attribute>
+      <xsl:apply-templates mode="scope" />
     </xsl:copy>
   </xsl:template>
 
@@ -175,7 +202,6 @@
     </xsl:variable>
 
     <xsl:attribute name="class"><xsl:value-of select="$bemmed-class" /></xsl:attribute>
-    <xsl:attribute name="data-x-{$x-component/@x-component-id}"></xsl:attribute>
 
   </xsl:template>
 
@@ -223,7 +249,6 @@
       <xsl:attribute name="class">
         <xsl:value-of select="$bem-class" />
       </xsl:attribute>
-      <xsl:attribute name="data-x-{$tag-name}-id"><xsl:value-of select="ancestor::x-component[1]/@x-component-id"/></xsl:attribute>
       <xsl:apply-templates mode="aaa"/>
     </xsl:copy>
   </xsl:template>
@@ -375,12 +400,13 @@
         window.xsalt.autoselect=function(tag,node,wrapper){
           var r=[];
           Array.prototype.slice.call(
-            node?[node]:document.getElementsByClassName(tag)
+            node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]')
           ).forEach(function(n,i){
             r[i]={};
             r[i].refs={};
             r[i].refs.$=n;
-            var els=n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]');
+            var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]'));
+            els.push(n);
             els.forEach(function(e){
               Array.prototype.slice.call(e.classList).forEach(function(className){
                 if(className.indexOf('$')!==0)return;
@@ -390,7 +416,7 @@
                 else r[i].refs[el]=[r[i].refs[el],e];
               });
             });
-            if(wrapper)for(var e in r[i])r[i][e]=wrapper(r[i][e]);
+            if(wrapper)for(var e in r[i].refs)r[i].refs[e]=wrapper(r[i].refs[e]);
           });
           return r;
         };
