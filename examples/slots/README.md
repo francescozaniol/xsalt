@@ -53,7 +53,6 @@ In this example [blog-article.html](./components/blog-article.html) shows how de
 
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/slots/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/slots/build.html).
 
-
 ## Read next
 
 [Auto BEM](../autobem)

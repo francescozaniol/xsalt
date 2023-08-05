@@ -45,3 +45,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 ```
 
 `refs.$counterButton` is wrapped by `window.jQuery` as specified after `|`.
+
+## Read next
+
+[X-store](../x-store)

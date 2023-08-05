@@ -67,3 +67,7 @@ Output code:
 ## Demo
 
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/autobem/build.html).
+
+## Read next
+
+[Auto select](../autoselect)

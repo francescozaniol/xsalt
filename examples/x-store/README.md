@@ -4,7 +4,7 @@ Xsalt provides a global data store which can be accessed by any component.
 
 ## External x-store
 
-For static data, you can import an external store from [includes.xsl](./includes.xsl):
+You can import an external store from [includes.xsl](./includes.xsl):
 ```xml
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -85,9 +85,8 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## Inline x-store
 
-Dynamic data (for example fetched from a database with PHP) can be printed directly inside the `x-store` tag in index.xhtml:
+Data can be printed directly inside the `x-store` tag as in this example:
 
-For example:
 ```html
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
@@ -118,7 +117,7 @@ For example:
 </html>
 ```
 
-Note that the `<x-store>` tag and its inner content will be removed from the HTML output.
+Note: the `<x-store>` tag and its inner content will be removed from the HTML output.
 
 ## X-store in JS
 
