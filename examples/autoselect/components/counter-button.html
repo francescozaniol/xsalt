@@ -6,7 +6,7 @@
   </template>
 
   <script autoselect="true">
-    refs.$counterButton.addEventListener('click', function () {
+    $refs.counterButton.addEventListener('click', function () {
       this.innerHTML = Number.parseInt(this.innerHTML) + 1;
     });
   </script>

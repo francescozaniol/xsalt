@@ -1,6 +1,6 @@
 # Auto select
 
-If `autoselect="true"` is assigned to the `script` tag, xsalt will automatically select any node which class starts with `$`.
+If `autoselect="true"` is assigned to the `script` tag, xsalt automatically selects any node which class starts with `$`.
 
 For example, have a look at [counter-button.html](./components/counter-button.html):
 ```html
@@ -11,7 +11,7 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
   </template>
 
   <script autoselect="true">
-    refs.$counterButton.addEventListener('click', function () {
+    $refs.counterButton.addEventListener('click', function () {
       this.innerHTML = Number.parseInt(this.innerHTML) + 1;
     });
   </script>
@@ -19,7 +19,7 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
 </xsl:template>
 ```
 
-`$counterButton` is now available under the `refs` variable.
+`counterButton` is now available under `$refs`.
 
 ## Demo
 
@@ -36,7 +36,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
   </template>
 
   <script autoselect="true|window.jQuery">
-    refs.$counterButton.on('click', function () {
+    $refs.counterButton.on('click', function () {
       this.innerHTML = Number.parseInt(this.innerHTML) + 1;
     });
   </script>
@@ -44,7 +44,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 </xsl:template>
 ```
 
-`refs.$counterButton` is wrapped by `window.jQuery` as specified after `|`.
+`$refs.counterButton` is wrapped by `window.jQuery`.
 
 ## Read next
 

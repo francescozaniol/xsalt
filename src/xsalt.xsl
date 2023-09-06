@@ -403,25 +403,24 @@
             node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]')
           ).forEach(function(n,i){
             r[i]={};
-            r[i].refs={};
-            r[i].refs.$=n;
+            r[i].$refs={};
             var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]'));
             els.push(n);
             els.forEach(function(e){
               Array.prototype.slice.call(e.classList).forEach(function(className){
                 if(className.indexOf('$')!==0)return;
-                var el=className;
-                if(!r[i].refs[el])r[i].refs[el]=e;
-                else if(Array.isArray(r[i].refs[el]))r[i].refs[el].push(e);
-                else r[i].refs[el]=[r[i].refs[el],e];
+                var el=className.slice(1);
+                if(!r[i].$refs[el])r[i].$refs[el]=e;
+                else if(Array.isArray(r[i].$refs[el]))r[i].$refs[el].push(e);
+                else r[i].$refs[el]=[r[i].$refs[el],e];
               });
             });
-            if(wrapper)for(var e in r[i].refs)r[i].refs[e]=wrapper(r[i].refs[e]);
+            if(wrapper)for(var e in r[i].$refs)r[i].$refs[e]=wrapper(r[i].$refs[e]);
           });
           return r;
         };
         </xsl:if>
-        <xsl:if test="//x-component/script[@autoselect or @custom-element]">
+        <xsl:if test="//x-component/script[@autoselect]">
         window.xsalt.componentInit={};
         </xsl:if>
         <xsl:if test="//x-component/script[@custom-element]">
@@ -503,7 +502,7 @@
             <xsl:sort select="position()" data-type="number" order="descending" />
             <xsl:choose>
               <xsl:when test="starts-with(./@autoselect, 'true')">
-                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var refs=this.refs;<xsl:value-of select="." />};
+                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var $refs=this.$refs;<xsl:value-of select="." />};
                 window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
                   <xsl:when test="starts-with(./@autoselect, 'true|')">
                     <xsl:variable name="wrapper">
