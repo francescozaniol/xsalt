@@ -343,34 +343,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="x-component/template" mode="bbb">
-    <xsl:variable name="x-component" select=".." />
-    <xsl:copy>
-      <xsl:copy-of select="./@*" />
-      <xsl:copy-of select="$x-component/@x-component-orig-tag" />
-      <xsl:apply-templates mode="bbb"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="x-component/script" mode="bbb">
-    <xsl:variable name="x-component" select=".." />
-    <xsl:copy>
-      <xsl:copy-of select="./@*" />
-      <xsl:copy-of select="$x-component/@x-component-orig-tag" />
-      <xsl:apply-templates mode="bbb"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="x-component/style" mode="bbb">
-    <xsl:variable name="x-component" select=".." />
-    <xsl:copy>
-      <xsl:copy-of select="./@*" />
-      <xsl:copy-of select="$x-component/@x-component-orig-tag" />
-      <xsl:apply-templates mode="bbb"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="x-component/insertAdjacentHTML" mode="bbb">
+  <xsl:template match="x-component/*" mode="bbb">
     <xsl:variable name="x-component" select=".." />
     <xsl:copy>
       <xsl:copy-of select="./@*" />
@@ -629,9 +602,7 @@
   </xsl:template>
   <xsl:template match="x-store" mode="ddd" />
   <xsl:template match="x-component-orig-innerhtml" mode="ddd" />
-  <xsl:template match="style[@x-component-orig-tag]" mode="ddd" />
-  <xsl:template match="script[@x-component-orig-tag]" mode="ddd" />
-  <xsl:template match="insertAdjacentHTML[@x-component-orig-tag]" mode="ddd" />
+  <xsl:template match="x-component/*[@x-component-orig-tag and name(.)!='template']" mode="ddd" />
   <xsl:template match="//x-slot[.//x-slot-remove]" mode="ddd" />
   <xsl:template match="template[@x-slot]" mode="ddd" />
   <xsl:template match="@x-component-orig-tag" mode="ddd" />
