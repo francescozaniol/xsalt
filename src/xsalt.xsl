@@ -368,7 +368,7 @@
       </xsl:for-each>
 
       <xsl:variable name="js-def">
-        window.xsalt={};
+        window.xsalt={componentInit:{}};
         <xsl:if test="//x-component/script[@autoselect]">
         window.xsalt.autoselect=function(tag,node,wrapper){
           var r=[];
@@ -392,9 +392,6 @@
           });
           return r;
         };
-        </xsl:if>
-        <xsl:if test="//x-component/script[@autoselect]">
-        window.xsalt.componentInit={};
         </xsl:if>
         <xsl:if test="//x-component/script[@custom-element]">
         window.xsalt.importXsl=function(url){

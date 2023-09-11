@@ -5,9 +5,9 @@
 <style></style>
 </head>
 <body>
-<button class="$counterButton" type="button" data-x-counter-button-id="idp1">0</button><script>window.xsalt={}; window.xsalt.autoselect=function(tag,node,wrapper){ var r=[]; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ r[i]={}; r[i].refs={}; r[i].refs.$=n; var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]')); els.push(n); els.forEach(function(e){ Array.prototype.slice.call(e.classList).forEach(function(className){ if(className.indexOf('$')!==0)return; var el=className; if(!r[i].refs[el])r[i].refs[el]=e; else if(Array.isArray(r[i].refs[el]))r[i].refs[el].push(e); else r[i].refs[el]=[r[i].refs[el],e]; }); }); if(wrapper)for(var e in r[i].refs)r[i].refs[e]=wrapper(r[i].refs[e]); }); return r; }; window.xsalt.componentInit={};</script><script>
-                window.xsalt.componentInit['counter-button']=function(){var refs=this.refs;
-    refs.$counterButton.addEventListener('click', function () {
+<button class="$counterButton" type="button" data-x-counter-button-id="idp1">0</button><script>window.xsalt={componentInit:{}}; window.xsalt.autoselect=function(tag,node,wrapper){ var r=[]; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ r[i]={}; r[i].$refs={}; var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]')); els.push(n); els.forEach(function(e){ Array.prototype.slice.call(e.classList).forEach(function(className){ if(className.indexOf('$')!==0)return; var el=className.slice(1); if(!r[i].$refs[el])r[i].$refs[el]=e; else if(Array.isArray(r[i].$refs[el]))r[i].$refs[el].push(e); else r[i].$refs[el]=[r[i].$refs[el],e]; }); }); if(wrapper)for(var e in r[i].$refs)r[i].$refs[e]=wrapper(r[i].$refs[e]); }); return r; };</script><script>
+                window.xsalt.componentInit['counter-button']=function(){var $refs=this.$refs;
+    $refs.counterButton.addEventListener('click', function () {
       this.innerHTML = Number.parseInt(this.innerHTML) + 1;
     });
   };
