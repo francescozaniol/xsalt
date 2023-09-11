@@ -46,7 +46,7 @@ Note how, on adding a new todo (see `script`), a `<todo-item>` is injected direc
 
 ## Demo
 
-See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/customelement/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/customelement/build.html).
+See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/custom-elements/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/custom-elements/build.html).
 
 ## Read next
 
