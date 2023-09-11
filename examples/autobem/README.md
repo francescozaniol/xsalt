@@ -10,16 +10,12 @@ If `autobem="true"` is assigned to the `template` tag, xsalt will:
 
 For example, this is [blog-article.html](./components/blog-article.html)'s template definition:
 ```html
-<xsl:template match="blog-article" mode="x-component">
-
-  <template autobem="true">
-    <article>
-      <h1 class="__heading">Title</h1>
-      Content
-    </article>
-  </template>
-
-</xsl>
+<template autobem="true">
+  <article>
+    <h1 class="__heading">Title</h1>
+    Content
+  </article>
+</template>
 ```
 
 And this is the output code:
@@ -36,20 +32,16 @@ If `autobem="true"` is assigned to the `style` tag, xsalt will replace any `\$\`
 
 This is [blog-article.html](./components/blog-article.html)' style definition:
 ```html
-<xsl:template match="blog-article" mode="x-component">
-
-  <style autobem="true">
-    .\$\ {
-      max-width: 20em;
-      padding: 1em;
-      border: 1px solid #999;
-    }
-    .\$\__heading {
-      margin: 0 0 1em 0;
-    }
-  </style>
-
-</xsl>
+<style autobem="true">
+  .\$\ {
+    max-width: 20em;
+    padding: 1em;
+    border: 1px solid #999;
+  }
+  .\$\__heading {
+    margin: 0 0 1em 0;
+  }
+</style>
 ```
 
 Output code:
