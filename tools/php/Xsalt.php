@@ -28,7 +28,7 @@ class Xsalt {
 
     $xsl->load(dirname(realpath($src))."/$xslHref");
 
-    if ( $_GET['xsalt_debug'] === 'true' ) {
+    if ( isset( $_GET['xsalt_debug'] ) && $_GET['xsalt_debug'] === 'true' ) {
       libxml_use_internal_errors(true);
       ini_set('display_errors',1);
       error_reporting(E_ERROR);
@@ -37,7 +37,7 @@ class Xsalt {
     $result = $proc->importStyleSheet($xsl);
     $errors = libxml_get_errors();
 
-    if ( $_GET['xsalt_debug'] === 'true' ) {
+    if ( isset( $_GET['xsalt_debug'] ) && $_GET['xsalt_debug'] === 'true' ) {
       libxml_use_internal_errors(false);
     }
 
