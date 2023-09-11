@@ -1,0 +1,18 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="todo-item" mode="x-component">
+
+  <template>
+    <div class="$totoItem">
+      <x-slot />
+      <button class="$remove" type="button">Remove</button>
+    </div>
+  </template>
+
+  <script autoselect="true">
+    $refs.remove.addEventListener('click', function () {
+      $refs.totoItem.remove();
+    });
+  </script>
+
+</xsl:template>
+</xsl:transform>

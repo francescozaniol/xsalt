@@ -11,6 +11,7 @@ $dirs = [
   'autobem',
   'x-store',
   'autoselect',
+  'custom-elements',
 ];
 
 foreach ($dirs as $dir) {

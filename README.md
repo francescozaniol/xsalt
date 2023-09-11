@@ -72,9 +72,9 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 - [Auto BEM](./examples/autobem): BEM-like classes automatically added by xsalt.
 - [Auto select](./examples/autoselect): Easy JS nodes auto-selection.
 - [X-store](./examples/x-store): global data store.
-- [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
-- Custom-elements: dynamic JS custom elements from xsalt components.`Docs:TODO/Feature:Available`
+- [Custom elements](./examples/custom-elements): live custom elements from xsalt components.
 - AlpineJS integration.`Docs:TODO/Feature:Available`
+- [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
 - XSL basics: Cool stuff you can do with XSL.`Docs:TODO`
 
 ## Installation

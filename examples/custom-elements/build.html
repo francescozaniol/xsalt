@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style></style>
+</head>
+<body>
+<div data-x-todo-app-id="idp1">
+<form class="$form" data-x-idp1="">
+<input type="text" class="$text" data-x-idp1=""><button type="submit">Add todo</button>
+</form>
+<div class="$todos" data-x-idp1="">
+<div class="$totoItem" data-x-todo-item-id="idp2">Buy milk<button class="$remove" type="button" data-x-idp2="">Remove</button>
+</div>
+<div class="$totoItem" data-x-todo-item-id="idp3">Buy bread<button class="$remove" type="button" data-x-idp3="">Remove</button>
+</div>
+</div>
+</div>
+<script>window.xsalt={componentInit:{}}; window.xsalt.autoselect=function(tag,node,wrapper){ var r=[]; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ r[i]={}; r[i].$refs={}; var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]')); els.push(n); els.forEach(function(e){ Array.prototype.slice.call(e.classList).forEach(function(className){ if(className.indexOf('$')!==0)return; var el=className.slice(1); if(!r[i].$refs[el])r[i].$refs[el]=e; else if(Array.isArray(r[i].$refs[el]))r[i].$refs[el].push(e); else r[i].$refs[el]=[r[i].$refs[el],e]; }); }); if(wrapper)for(var e in r[i].$refs)r[i].$refs[e]=wrapper(r[i].$refs[e]); }); return r; }; window.xsalt.importXsl=function(url){ return new Promise(function(res,rej){ var xhr=new XMLHttpRequest(); xhr.open('GET',url,false); xhr.onload=function(){ var xsl=xhr.responseXML; window.xsalt.XSLTProcessor=new XSLTProcessor(); window.xsalt.XSLTProcessor.importStylesheet(xsl); xsl=document.implementation.createDocument('','',null); window.xsalt.DOMParser=new DOMParser(); window.xsalt.customElements.define(['todo-item',]); if(xhr.status>=200&&xhr.status<300)res(xhr.response); else rej({status:xhr.status,statusText:xhr.statusText}); }; xhr.onerror=function(){rej({status:xhr.status,statusText:xhr.statusText})}; xhr.send(null); }); }; window.xsalt.customElements={ id:0, define:function(tag){ if(Array.isArray(tag)){tag.forEach(window.xsalt.customElements.define);return;} if(window.customElements.get(tag))return; window.customElements.define(tag,class extends HTMLElement{constructor(){super(); var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml'); var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc, document); var node=fragment.firstElementChild; this.parentNode.replaceChild(node,this); const xId=node.getAttribute('data-x-'+tag+'-id'); node.setAttribute('data-x-'+tag+'-id','id-ce-'+(++window.xsalt.customElements.id)); node.querySelectorAll('[data-x-'+xId+']').forEach(function(n){ n.removeAttribute('data-x-'+xId); n.setAttribute('data-x-'+'id-ce-'+window.xsalt.customElements.id,''); }); window.xsalt.componentInit[tag]&&window.xsalt.autoselect( tag, node, window.xsalt.componentInit[tag].wrapper ).forEach(function(e){window.xsalt.componentInit[tag].call(e);}); }})} }; window.xsalt.importXsl('./includes.xsl');</script><script>
+                window.xsalt.componentInit['todo-app']=function(){var $refs=this.$refs;/**/
+    $refs.form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      $refs.todos.insertAdjacentHTML('beforeend',
+        '<todo-item>' + $refs.text.value + '</todo-item>'
+      );
+    });
+  /**/};
+                window.xsalt.componentInit['todo-app'].wrapper=null;window.xsalt.autoselect('todo-app',null,window.xsalt.componentInit['todo-app'].wrapper).forEach(function(e){window.xsalt.componentInit['todo-app'].call(e)});
+              
+                window.xsalt.componentInit['todo-item']=function(){var $refs=this.$refs;
+    $refs.remove.addEventListener('click', function () {
+      $refs.totoItem.remove();
+    });
+  };
+                window.xsalt.componentInit['todo-item'].wrapper=null;window.xsalt.autoselect('todo-item',null,window.xsalt.componentInit['todo-item'].wrapper).forEach(function(e){window.xsalt.componentInit['todo-item'].call(e)});
+              </script>
+</body>
+</html>
