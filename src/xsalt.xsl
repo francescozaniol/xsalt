@@ -478,9 +478,7 @@
           ]">
             <xsl:sort select="position()" data-type="number" order="descending" />
             <xsl:choose>
-              <xsl:when test="starts-with(./@autoselect, 'true')">
-                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var $refs=this.$refs;<xsl:value-of select="." />};
-                window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
+              <xsl:when test="starts-with(./@autoselect, 'true')">window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var $refs=this.$refs;<xsl:value-of select="." />};window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
                   <xsl:when test="starts-with(./@autoselect, 'true|')">
                     <xsl:variable name="wrapper">
                       <xsl:call-template name="string-replace-all">
@@ -491,8 +489,7 @@
                     </xsl:variable><xsl:value-of select="$wrapper"/>
                   </xsl:when>
                   <xsl:otherwise>null</xsl:otherwise>
-                </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(e){window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].call(e)});
-              </xsl:when>
+                </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(e){window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].call(e)});</xsl:when>
               <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
               <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
             </xsl:choose>
