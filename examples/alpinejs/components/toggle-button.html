@@ -1,0 +1,21 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="toggle-button" mode="x-component">
+
+  <template autobem="true">
+    <button type="button"
+      x-on..click="pressed = !pressed"
+      x-bind..aria-pressed="Boolean(pressed)"
+      x-data="{{ pressed: false }}"
+    >
+      <x-slot />
+    </button>
+  </template>
+
+  <style autobem="true">
+    .\$\[aria-pressed=true] {
+      outline: 3px solid red;
+    }
+  </style>
+
+</xsl:template>
+</xsl:transform>

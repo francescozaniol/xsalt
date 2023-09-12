@@ -12,6 +12,7 @@ $dirs = [
   'x-store',
   'autoselect',
   'custom-elements',
+  'alpinejs',
 ];
 
 foreach ($dirs as $dir) {
