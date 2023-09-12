@@ -32,7 +32,7 @@ For example, have a look at [toggle-button](./components/toggle-button.html):
 
 Note the usage of `x-on..` and `x-bind..`. Such attributes will be transformed by xsalt into `x-on:` and `x-bind:`. Note also that it is mandatory the usage of `x-on..click` instead of `@click`.
 
-Finally note the usage of double braches inside `x-data`.
+Finally note the usage of double braces inside `x-data`.
 
 ## Demo
 
