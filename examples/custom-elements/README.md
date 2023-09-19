@@ -38,9 +38,9 @@ For example, have a look at this simple [todo-app](./components/todo-app.html):
 </xsl:template>
 ```
 
-The `custom-elements` tag should contain a list of self-closing tags which will be defined as custom elements.
+The `custom-elements` tag should contain a list of self-closing tags which will be defined as custom elements (note: the tags inside `custom-elements` will not be transformed; their porpuse is declarative only).
 
-`custom-elements` must also define the `xslt-import-url` attribute, which will be used by Javascript to import the transformations. Important: such url is relative to the document's url, it is NOT a path relative to the current file.
+`custom-elements` must also define the `xslt-import-url` attribute, which will be used by Javascript to import the transformations. Important: such url is relative to the document's url, it is not a path relative to the current file.
 
 Note how, on adding a new todo (see `script`), a `<todo-item>` is injected directly in the dom. That's because it's defined as a custom element.
 
