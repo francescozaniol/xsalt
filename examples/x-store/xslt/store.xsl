@@ -13,14 +13,6 @@
       <heading>Article 3</heading>
       <content>Duis aute irure dolor <strong>in reprehenderit</strong> in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</content>
     </article>
-    <article>
-      <heading>Article 4</heading>
-      <content><strong>Excepteur sint</strong> occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</content>
-    </article>
-    <article>
-      <heading>Article 5</heading>
-      <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <strong>sed do eiusmod</strong> tempor incididunt ut labore et dolore magna aliqua.</content>
-    </article>
   </articles>
 </xsl:template>
 </xsl:transform>

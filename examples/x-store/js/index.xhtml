@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
+<html>
+  <head />
+  <body>
+    <blog-articles />
+    <x-store>
+      <articles x-store-js="true">
+        <article>
+          <heading>Article 1</heading>
+          <content><strong>Lorem ipsum dolor</strong> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</content>
+        </article>
+        <article>
+          <heading>Article 2</heading>
+          <content>Ut enim ad minim veniam, <strong>quis nostrud exercitation</strong> ullamco laboris nisi ut aliquip ex ea commodo consequat.</content>
+        </article>
+        <article>
+          <heading>Article 3</heading>
+          <content>Duis aute irure dolor <strong>in reprehenderit</strong> in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</content>
+        </article>
+      </articles>
+    </x-store>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        window.xsalt.xStore.querySelectorAll('articles > article').forEach( article => {
+          console.log(article);
+        });
+      });
+    </script>
+  </body>
+</html>
