@@ -460,7 +460,7 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:element>
-        <xsl:element name="script" namespace="">window.xsalt.xStore=(new DOMParser()).parseFromString(window.document.getElementById('xsalt-x-store').innerHTML,'text/xml');</xsl:element>
+        <xsl:element name="script" namespace="">if(!window.xsalt)window.xsalt={};window.xsalt.xStore=(new DOMParser()).parseFromString(window.document.getElementById('xsalt-x-store').innerHTML,'text/xml');</xsl:element>
       </xsl:if>
 
       <xsl:for-each select="//x-component/insertAdjacentHTML[
