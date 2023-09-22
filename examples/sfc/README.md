@@ -25,7 +25,6 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
     }
   /*]]>*/</style>
 
-  <!-- reset.min.css -->
   <insertAdjacentHTML tagName="head" position="beforeend">
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
@@ -35,7 +34,6 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
     />
   </insertAdjacentHTML>
 
-  <!-- jquery -->
   <insertAdjacentHTML tagName="body" position="beforeend">
     <script
       src="https://code.jquery.com/jquery-3.6.3.slim.min.js"

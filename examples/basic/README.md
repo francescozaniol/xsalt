@@ -51,7 +51,7 @@ Note how the file has the `html` extension? This is only for syntax highlight re
 
 As for line 2:
 - The `xsl:template` tag wraps the definition of the component.
-- The `match` attribute defines the tag of the component.
+- The `match` attribute specifies the tag of the component.
 - The `mode="x-component"` attribute is needed by xsalt.
 
 ## Demo
