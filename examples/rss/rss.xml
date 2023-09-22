@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="./style.xsl" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS example</title>
+    <link>https://github.com/francescozaniol/xsalt</link>
+    <description>Kinda like Vue, but written in XSLT</description>
+    <item>
+      <title>Article 1</title>
+      <link>https://github.com/francescozaniol/xsalt</link>
+      <description><strong>Lorem ipsum dolor</strong> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+    </item>
+    <item>
+      <title>Article 2</title>
+      <link>https://github.com/francescozaniol/xsalt</link>
+      <description>Ut enim ad minim veniam, <strong>quis nostrud exercitation</strong> ullamco laboris nisi ut aliquip ex ea commodo consequat.</description>
+    </item>
+    <item>
+      <title>Article 3</title>
+      <link>https://github.com/francescozaniol/xsalt</link>
+      <description>Duis aute irure dolor <strong>in reprehenderit</strong> in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</description>
+    </item>
+  </channel>
+</rss>
