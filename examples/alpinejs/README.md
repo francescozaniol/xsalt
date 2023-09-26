@@ -3,11 +3,15 @@
 "[Alpine](https://alpinejs.dev/) is a rugged, minimal tool for composing behavior directly in your markup."
 
 The usage of Alpine in xsalt components has some caveats:
-- AlpineJS uses the `:` symbol (for example `x-on:click`). Such symbol is reserved in the XML markup, therefore xsalt offers a workaround: the usage of `..` instead of `:` (think of it as `:` but tilted 90 degrees).
-- AlpineJS also uses `@`, but this character is completely illegal in XML and cannot be used.
-- The usage of `{` and `}` inside attributes is reserved to XSLT, therefore escaping them with double braces (`{{` and `}}`) is needed.
 
-For example, have a look at [toggle-button](./components/toggle-button.html):
+- AlpineJS uses the `:` symbol (for example `x-on:click`). Such symbol is a reserved character in XML identifiers therefore xsalt offers a workaround: the usage of `..` instead of `:` (think of it as `:` but tilted 90 degrees). For example, use `x-on..click` instead of `x-on:click`.
+- AlpineJS uses few shorthands that are not compatible with the XML standard (QName invalid), therefore these cannot be used. Such shorthands are:
+  - `@` is the shorthand for dispatched DOM events. In this case use `x-on..click` instead of `@click`.
+  - An attribute starting with `:` is the shorthand for `x-bind:` and cannot be used. In this case use `x-bind..key` instead of `:key`..
+- Finally, the usage of `{` and `}` inside attributes is reserved in XSLT, therefore these should be escaped with double braces (`{{` and `}}`).
+
+As an example, have a look at [toggle-button](./components/toggle-button.html):
+
 ```html
 <xsl:template match="toggle-button" mode="x-component">
 
