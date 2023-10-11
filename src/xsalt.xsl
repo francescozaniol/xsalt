@@ -420,7 +420,7 @@
             if(window.customElements.get(tag))return;
             window.customElements.define(tag,class extends HTMLElement{constructor(){super();
             var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml');
-            var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc, document);
+            var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc,document);
             var node=fragment.firstElementChild;
             this.parentNode.replaceChild(node,this);
             const xId=node.getAttribute('data-x-'+tag+'-id');
