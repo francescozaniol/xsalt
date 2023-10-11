@@ -564,7 +564,7 @@
           <xsl:when test="contains(local-name(),'..')" >
             <xsl:attribute
               name="{substring-before(local-name(),'..')}:{substring-after(local-name(),'..')}"
-              namespace="/"
+              namespace="{substring-before(local-name(),'..')}"
             >
               <xsl:value-of select="." />
             </xsl:attribute>
