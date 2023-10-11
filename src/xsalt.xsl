@@ -586,9 +586,6 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="template[@x-component-orig-tag]" mode="ddd">
-    <xsl:apply-templates mode="ddd"/>
-  </xsl:template>
   <xsl:template match="x-component" mode="ddd">
     <xsl:apply-templates mode="ddd"/>
   </xsl:template>
@@ -598,11 +595,11 @@
   <xsl:template match="x-slot-content" mode="ddd">
     <xsl:apply-templates mode="ddd"/>
   </xsl:template>
-  <xsl:template match="template[@x-slot]" mode="ddd">
-    <xsl:apply-templates mode="ddd"/>
-  </xsl:template>
   <xsl:template match="x-store" mode="ddd" />
   <xsl:template match="x-component-orig-innerhtml" mode="ddd" />
+  <xsl:template match="x-component/template[@x-component-orig-tag]" mode="ddd">
+    <xsl:apply-templates mode="ddd"/>
+  </xsl:template>
   <xsl:template match="x-component/*[@x-component-orig-tag and name(.)!='template']" mode="ddd" />
   <xsl:template match="//x-slot[.//x-slot-remove]" mode="ddd" />
   <xsl:template match="template[@x-slot]" mode="ddd" />
