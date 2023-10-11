@@ -398,7 +398,7 @@
         window.xsalt.importXsl=function(url){
           return new Promise(function(res,rej){
             var xhr=new XMLHttpRequest();
-            xhr.open('GET',url,false);
+            xhr.open('GET',url,true);
             xhr.onload=function(){
               var xsl=xhr.responseXML;
               window.xsalt.XSLTProcessor=new XSLTProcessor();
