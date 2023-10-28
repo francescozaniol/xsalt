@@ -40,7 +40,7 @@ Finally note the usage of double braces inside `v-scope`.
 
 ## Demo
 
-See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/alpinejs/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/alpinejs/build.html).
+See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/build.html).
 
 ## Read next
 

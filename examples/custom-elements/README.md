@@ -50,4 +50,4 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## Read next
 
-[AlpineJS integration](../alpinejs)
+[petite-vue integration](../petite-vue)

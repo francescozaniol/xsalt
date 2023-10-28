@@ -15,7 +15,7 @@ $dirs = [
   'x-store/xslt',
   'autoselect',
   'custom-elements',
-  'alpinejs',
+  'petite-vue',
 ];
 
 foreach ($dirs as $dir) {
