@@ -42,6 +42,10 @@ Finally note the usage of double braces inside `v-scope`.
 
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/build.html).
 
+## What about AlpineJS?
+
+AlpineJS works fine for "static" builds/renders. For live XSLT transformations is buggy.
+
 ## Read next
 
 [Xsalt.php](../../tools/php)

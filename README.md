@@ -73,7 +73,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 - [Auto select](./examples/autoselect): Easy JS nodes auto-selection.
 - [X-store](./examples/x-store): global data store.
 - [Custom elements](./examples/custom-elements): live custom elements from xsalt components.
-- [AlpineJS integration](./examples/alpinejs): use AlpineJS in xsalt components.
+- [petite-vue integration](./examples/petite-vue): use petite-vue in xsalt components.
 - [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
 
 ## Installation
