@@ -3,9 +3,9 @@
 
   <template autobem="true">
     <button type="button"
-      x-on..click="pressed = !pressed"
-      x-bind..aria-pressed="Boolean(pressed)"
-      x-data="{{ pressed: false }}"
+      v-on..click="pressed = !pressed"
+      v-bind..aria-pressed="Boolean(pressed)"
+      v-scope="{{ pressed: false }}"
     >
       <x-slot />
     </button>
