@@ -26,7 +26,7 @@ As an example, have a look at [toggle-button](./components/toggle-button.html):
   </template>
 
   <style autobem="true">
-    .\$\[aria-pressed=true] {
+    .\$[aria-pressed=true] {
       outline: 3px solid red;
     }
   </style>

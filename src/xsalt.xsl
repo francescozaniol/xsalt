@@ -526,7 +526,7 @@
               <xsl:when test="./@autobem = 'true'">
                 <xsl:call-template name="string-replace-all">
                   <xsl:with-param name="text" select="." />
-                  <xsl:with-param name="replace">\$\</xsl:with-param>
+                  <xsl:with-param name="replace">\$</xsl:with-param>
                   <xsl:with-param name="by" select="./@x-component-orig-tag"/>
                 </xsl:call-template>
               </xsl:when>

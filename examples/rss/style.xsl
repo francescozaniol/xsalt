@@ -46,7 +46,7 @@
     </template>
 
     <style autobem="true">
-      .\$\ {
+      .\$ {
         padding: 10px;
         border: 1px solid #999;
         margin: 0 0 10px 0;
