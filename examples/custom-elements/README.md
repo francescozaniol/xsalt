@@ -1,8 +1,8 @@
 # Custom Elements
 
-Xsalt components can be defined as [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements). Nodes will be transformed by Javascript using the native browser XSLT engine.
+Xsalt components can be defined as [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements). Nodes will be transformed by JavaScript using the native browser XSLT engine.
 
-For example, have a look at this simple [todo-app](./components/todo-app.html):
+For example, consider this simple [todo-app](./components/todo-app.html):
 ```html
 <xsl:template match="todo-app" mode="x-component">
 
@@ -38,11 +38,11 @@ For example, have a look at this simple [todo-app](./components/todo-app.html):
 </xsl:template>
 ```
 
-The `custom-elements` tag should contain a list of self-closing tags which will be defined as custom elements (note: the tags inside `custom-elements` will not be transformed; their porpuse is declarative only).
+The `custom-elements` tag should contain a list of self-closing tags that will be defined as custom elements. Note: the tags inside `custom-elements` will not be transformed; their porpuse is declarative only.
 
-`custom-elements` must also define the `xslt-import-url` attribute, which will be used by Javascript to import the transformations. Important: such url is relative to the document's url, it is not a path relative to the current file.
+`custom-elements` must also define the `xslt-import-url` attribute, which will be used by JavaScript to import the transformations. Important: this URL is relative to the document's URL, not a path relative to the current file.
 
-Note how, on adding a new todo (see `script`), a `<todo-item>` is injected directly in the dom. That's because it's defined as a custom element.
+Note how, when adding a new todo (see `script`), a `<todo-item>` is injected directly into the DOM because it's defined as a custom element.
 
 ## Demo
 

@@ -2,11 +2,11 @@
 Kinda like Vue, but written in XSLT
 
 ## About
-With xsalt you can define Vue-like components to transform XML/XHTML/RSS into HTML.
+With Xsalt, you can define Vue-like components to transform XML/XHTML/RSS into HTML.
 
-Xsalt does not need complex tooling such as Webpack or Vite, a simple PHP script is sufficient to render/build web pages. XSLT is also natively understood by browsers, so components may be transformed on the fly without build tools.
+Xsalt doesn't require complex tooling like Webpack or Vite; a simple PHP script is sufficient for rendering/building web pages. XSLT is also natively understood by browsers, allowing components to be transformed on the fly without the need for build tools.
 
-I use xsalt for static minisites.
+I use Xsalt for creating static minisites.
 
 ## Example
 index.xhtml:
@@ -66,15 +66,15 @@ result:
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/basic/build.html)
 
 ## Features & Docs
-- [The basics](./examples/basic): the example you've just read, explained.
-- [Single-File Components](./examples/sfc): inspired by Vue's `template`, `script` and `style` tags.
-- [Slots](./examples/slots): default and named slots.
+- [The basics](./examples/basic): The example you've just read, explained.
+- [Single-File Components](./examples/sfc): Inspired by Vue's `template`, `script` and `style` tags.
+- [Slots](./examples/slots): Default and named slots.
 - [Auto BEM](./examples/autobem): BEM-like classes automatically added by xsalt.
 - [Auto select](./examples/autoselect): Easy JS nodes auto-selection.
-- [X-store](./examples/x-store): global data store.
-- [Custom elements](./examples/custom-elements): live custom elements from xsalt components.
-- [petite-vue integration](./examples/petite-vue): use petite-vue in xsalt components.
-- [Xsalt.php](./tools/php): a simple PHP class to render or build a page.
+- [X-store](./examples/x-store): Global data store.
+- [Custom elements](./examples/custom-elements): Live custom elements from Xsalt components.
+- [petite-vue integration](./examples/petite-vue): Use petite-vue in Xsalt components.
+- [Xsalt.php](./tools/php): A simple PHP class to render or build a page.
 
 ## Installation
 ```

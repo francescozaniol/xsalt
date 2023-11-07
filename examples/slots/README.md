@@ -1,6 +1,6 @@
 # Slots
 
-In this example [blog-article.html](./components/blog-article.html) shows how default and named slots are defined:
+In this example, [blog-article.html](./components/blog-article.html) illustrates how default and named slots are defined:
 ```html
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:template match="blog-article" mode="x-component">
@@ -26,11 +26,11 @@ In this example [blog-article.html](./components/blog-article.html) shows how de
 ```
 
 - `<x-slot />` defines the default slot.
-- `<x-slot name="heading">` is a named slot. As you can see the slotted content is injected where the `<x-slot-content />` is, so that it can be wrapped by some other tags (in this case an h1).
+- `<x-slot name="heading">` is a named slot. As you can see, the slotted content is injected where `<x-slot-content />` is used, allowing it to be wrapped by other tags, in this case, an `<h1>`.
 
 ---
 
-[index.xhtml](./index.xhtml) shows slots usage:
+[index.xhtml](./index.xhtml) demonstrates slot usage:
 ```html
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
@@ -47,7 +47,7 @@ In this example [blog-article.html](./components/blog-article.html) shows how de
 </html>
 ```
 
-- Named slots are populated by the usage of `<template x-slot="name-of-the-slot">`.
+- Named slots are populated by using `<template x-slot="name-of-the-slot">`.
 
 ## Demo
 

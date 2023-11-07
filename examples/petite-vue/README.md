@@ -2,15 +2,15 @@
 
 "[petite-vue](https://github.com/vuejs/petite-vue) is an alternative distribution of Vue optimized for progressive enhancement."
 
-The usage of petite-vue in xsalt components has some caveats:
+Using petite-vue in Xsalt components comes with some caveats:
 
-- petite-vue uses the `:` symbol (for example `v-on:click`). Such symbol is a reserved character in XML identifiers therefore xsalt offers a workaround: the usage of `..` instead of `:` (think of it as `:` but tilted 90 degrees). For example, use `v-on..click` instead of `v-on:click`.
-- petite-vue uses few shorthands that are not compatible with the XML standard (QName invalid), therefore these cannot be used. Such shorthands are:
-  - `@` is the shorthand for dispatched DOM events. In this case use `v-on..click` instead of `@click`.
+- petite-vue uses the `:` symbol (for example `v-on:click`). However, this symbol is a reserved character in XML, therefore Xsalt offers a workaround: the usage of `..` instead of `:` (think of it as `:` but tilted 90 degrees). For example, use `v-on..click` instead of `v-on:click`.
+- petite-vue uses a few shorthands that are not compatible with the XML standard (QName invalid), and therefore cannot be used. These shorthands include:
+  - `@` which is the shorthand for dispatched DOM events. In this case, use `v-on..click` instead of `@click`.
   - An attribute starting with `:` is the shorthand for `v-bind:` and cannot be used. In this case use `v-bind..key` instead of `:key`..
-- Finally, the usage of `{` and `}` inside attributes is reserved in XSLT, therefore these should be escaped with double braces (`{{` and `}}`).
+- Lastly, the usage of `{` and `}` inside attributes is reserved in XSLT, therefore these should be escaped with double braces (`{{` and `}}`).
 
-As an example, have a look at [toggle-button](./components/toggle-button.html):
+As an example, take a look at [toggle-button](./components/toggle-button.html):
 
 ```html
 <xsl:template match="toggle-button" mode="x-component">
@@ -34,9 +34,9 @@ As an example, have a look at [toggle-button](./components/toggle-button.html):
 </xsl:template>
 ```
 
-Note the usage of `v-on..` and `v-bind..`. Such attributes will be transformed by xsalt into `v-on:` and `v-bind:`. Note also that it is mandatory the usage of `v-on..click` instead of `@click`.
+Note the usage of `v-on..` and `v-bind..`. Such attributes will be transformed by xsalt into `v-on:` and `v-bind:`. Also, note that it is mandatory to use `v-on..click` instead of `@click`.
 
-Finally note the usage of double braces inside `v-scope`.
+Finally, note the usage of double braces inside `v-scope`.
 
 ## Demo
 
@@ -44,7 +44,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## What about AlpineJS?
 
-AlpineJS works fine for "static" builds/renders. For live XSLT transformations is buggy.
+AlpineJS works fine for "static" builds/renders. However, for live XSLT transformations, it can be buggy.
 
 ## Read next
 

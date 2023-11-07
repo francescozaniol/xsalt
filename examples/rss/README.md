@@ -1,6 +1,6 @@
 # Styled RSS
 
-In this example xsalt is used to transform an RSS feed into HTML:
+In this example Xsalt is used to transform an RSS feed into HTML:
 
 [rss.xml](./rss.xml) is the RSS source. [style.xsl](./style.xsl) defines how to transform the feed.
 

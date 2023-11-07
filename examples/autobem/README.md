@@ -1,14 +1,14 @@
 # Auto BEM
 
-Xsalt scopes the code for you with [BEM](https://getbem.com).
+Xsalt automatically scopes your code with [BEM](https://getbem.com).
 
 ## Template autobem
 
-If `autobem="true"` is assigned to the `template` tag, xsalt will:
-1. Add the matched tag (in this example `blog-article`) to the class of the "root" wrapper.
+When `autobem="true"` is assigned to the `template` tag, Xsalt will:
+1. Add the matched tag (in this example, `blog-article`) to the class of the "root" wrapper.
 2. Prepend the matched tag to any class starting with `__`.
 
-For example, this is [blog-article.html](./components/blog-article.html)'s template definition:
+For example, consider the template definition in [blog-article.html](./components/blog-article.html):
 ```html
 <template autobem="true">
   <article>
@@ -18,7 +18,7 @@ For example, this is [blog-article.html](./components/blog-article.html)'s templ
 </template>
 ```
 
-And this is the output code:
+The output code will be:
 ```html
 <article class="blog-article">
   <h1 class="blog-article__heading">Title</h1>
@@ -28,9 +28,9 @@ And this is the output code:
 
 ## Style autobem
 
-If `autobem="true"` is assigned to the `style` tag, xsalt will replace any `\$` with the matched tag (in this example "`blog-article`").
+When `autobem="true"` is assigned to the `style` tag, Xsalt will replace any `\$` with the matched tag (in this example, `blog-article`).
 
-This is [blog-article.html](./components/blog-article.html)' style definition:
+Consider the style definition in [blog-article.html](./components/blog-article.html):
 ```html
 <style autobem="true">
   .\$ {
@@ -44,7 +44,7 @@ This is [blog-article.html](./components/blog-article.html)' style definition:
 </style>
 ```
 
-Output code:
+The output code will be:
 ```css
 .blog-article {
   max-width: 20em;

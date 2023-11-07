@@ -1,8 +1,8 @@
 # SFC - Single-File Components
 
-Xsalt is heavily inspired by Vue, and it has a similar usage of the `template`, `style` and `script` tags.
+Xsalt is heavily inspired by Vue, and employs similar usage of the `template`, `style` and `script` tags.
 
-For example, have a look at [counter-button.html](./components/counter-button.html):
+Consider [counter-button.html](./components/counter-button.html) as an example:
 ```html
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:template match="counter-button" mode="x-component">
@@ -45,10 +45,10 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
 </xsl:transform>
 ```
 
-- The `template` block defines how the component's match tag will be expanded.
+- The `template` block specifies how the component's match tag will expand.
 - The `script` block is injected at the end of the `body` tag.
 - The `style` block is injected at the end of the `head` tag.
-- The `insertAdjacentHTML` can be used to inject tags (usually dependencies) into the `head` or `body`. In this example the `reset.min.css` and `jquery` dependencies are injected. Note that `tagName` can receive `head` or `body`; `position` supports only `beforeend`.
+- The `insertAdjacentHTML` allows the injection of tags, typically dependencies, into the `head` or `body`. In this example, `reset.min.css` and `jquery` dependencies are injected. Note that `tagName` can be either `head` or `body`, and `position` only supports `beforeend`.
 
 ## Demo
 
@@ -56,10 +56,10 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## Other notes
 
-- See how `style` and `script` are wrapped by such ugly `/*<![CDATA[*/ ... /*]]>*/`? This is needed to escape special XML characters: without CDATA the inclusion of, for example, this code: `if(condition1 && condition2) {...}` would break the parser because `&` is a special charater in XML. If no special characters are used then CDATA is not necessary.
-- The `style`, `script` and `insertAdjacentHTML` tags are injected only once in the page, even if multiple `counter-button` are used.
-- The `script` block is wrapped by an IIFE function to ensure scope isolation from the global context. If you want to avoid this, use `<script scoped="false">`.
-- It is good practice to use a `-` for the `match` tag. Note also that anything starting with `x-` is likely to be a reserved name for xsalt, therefore avoid the usage of any `x-` for your tags.
+- Notice the awkward `/*<![CDATA[*/ ... /*]]>*/` wrapping around the `style` and `script` blocks? This is essential for escaping special XML characters. Without CDATA, including code like `if(condition1 && condition2) {...}` would break the parser because `&` is a special character in XML. If no special characters are used, CDATA is not needed.
+- The `style`, `script` and `insertAdjacentHTML` tags are injected only once on the page, even if multiple `counter-button` components are used.
+- The `script` block is enclosed in an IIFE function to ensure scope isolation from the global context. If you wish to avoid this, use `<script scoped="false">`.
+- 's a good practice to use a hyphen `-` for the `match` tag. Additionally, be aware that any tag starting with `x-` is likely to be a reserved name in Xsalt, so avoid using `x-` for your tags.
 
 ## Read next
 

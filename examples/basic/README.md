@@ -12,11 +12,11 @@ In this example [index.xhtml](./index.xhtml) is the root XML file that will be t
 </html>
 ```
 
-It imports transformations via includes.xsl.
+It imports transformations via `includes.xsl`.
 
 ---
 
-[includes.xsl](./includes.xsl) imports the framework itself and a component hello-world:
+[includes.xsl](./includes.xsl) imports the framework itself and a component, `hello-world`:
 ```xml
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -28,7 +28,7 @@ It imports transformations via includes.xsl.
 
 ---
 
-[hello-world.html](./components/hello-world.html) defines a xsalt component:
+[hello-world.html](./components/hello-world.html) defines a Xsalt component:
 ```html
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:template match="hello-world" mode="x-component">
@@ -47,12 +47,12 @@ It imports transformations via includes.xsl.
 </xsl:transform>
 ```
 
-Note how the file has the `html` extension? This is only for syntax highlight reasons. As you can read from line 1 the file is actually a XSL transformation. Such `xsl:transform` tag, although a bit verbose, is necessary.
+Note how the file has the `.html` extension. This is for syntax highlighting purposes. As you can see from line 1, the file is actually an XSL transformation. The `xsl:transform` tag, although verbose, is necessary.
 
 As for line 2:
 - The `xsl:template` tag wraps the definition of the component.
 - The `match` attribute specifies the tag of the component.
-- The `mode="x-component"` attribute is needed by xsalt.
+- The `mode="x-component"` attribute is required by Xsalt.
 
 ## Demo
 
@@ -60,4 +60,4 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## Read next
 
-[Single-File Components](../sfc): `template`, `script` and `style` usage.
+[Single-File Components](../sfc): Usage of `template`, `script` and `style`.

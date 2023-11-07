@@ -1,6 +1,6 @@
 # x-store
 
-Xsalt provides a global data store which can be accessed by any component. The store can be populated in few ways:
+Xsalt provides a global data store that can be accessed by any component. The store can be populated in a few ways:
 
 ## Inline x-store data
 
@@ -164,7 +164,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## X-store in JS
 
-The data in the store can also be accessed from Javascript by adding the attribute `x-store-js="true"` to the node that you want to expose:
+The data in the store can also be accessed from JavaScript by adding the attribute `x-store-js="true"` to the node that you want to expose:
 
 ```xml
 <x-store>
@@ -176,7 +176,7 @@ The data in the store can also be accessed from Javascript by adding the attribu
 </x-store>
 ```
 
-Now `articles` is available as XML nodes from the global var `window.xsalt.xStore`:
+Now `articles` is available as XML nodes from the global variable `window.xsalt.xStore`:
 
 ```js
 window.xsalt.xStore.querySelectorAll('articles > article').forEach( article => {

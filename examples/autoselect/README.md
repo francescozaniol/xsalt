@@ -1,8 +1,8 @@
 # Auto select
 
-If `autoselect="true"` is assigned to the `script` tag, xsalt automatically selects any node which class starts with `$`.
+When `autoselect="true"` is assigned to the `script` tag, Xsalt automatically selects any node whose class starts with `$`.
 
-For example, have a look at [counter-button.html](./components/counter-button.html):
+For example, consider [counter-button.html](./components/counter-button.html):
 ```html
 <xsl:template match="counter-button" mode="x-component">
 
@@ -19,7 +19,7 @@ For example, have a look at [counter-button.html](./components/counter-button.ht
 </xsl:template>
 ```
 
-`counterButton` is now available under `$refs`.
+Now, `counterButton` is available under `$refs`.
 
 ## Demo
 
@@ -27,7 +27,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 ## Custom wrapper
 
-`autoselect` may accept an additional parameter as the wrapper of the selected nodes. For example:
+The `autoselect` attribute may accept an additional parameter as the wrapper for the selected nodes. For example:
 ```html
 <xsl:template match="counter-button" mode="x-component">
 
@@ -44,7 +44,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 </xsl:template>
 ```
 
-`$refs.counterButton` is wrapped by `window.jQuery`.
+Here, `$refs.counterButton` is wrapped by `window.jQuery`.
 
 ## Read next
 
