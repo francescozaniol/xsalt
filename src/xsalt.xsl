@@ -422,7 +422,7 @@
             var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml');
             var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc,document);
             var node=fragment.firstElementChild;
-            this.parentNode.replaceChild(node,this);
+            this.replaceWith(node);
             const xId=node.getAttribute('data-x-'+tag+'-id');
             node.setAttribute('data-x-'+tag+'-id','id-ce-'+(++window.xsalt.customElements.id));
             node.querySelectorAll('[data-x-'+xId+']').forEach(function(n){
