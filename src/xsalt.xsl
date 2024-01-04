@@ -103,8 +103,11 @@
             <xsl:variable name="x-component-aaa">
               <xsl:apply-templates select="ext:node-set($x-component-bem)" mode="aaa" />
             </xsl:variable>
+            <xsl:variable name="x-component-petitevue">
+              <xsl:apply-templates select="ext:node-set($x-component-aaa)" mode="petitevue" />
+            </xsl:variable>
             <xsl:variable name="x-component-x-slot">
-              <xsl:apply-templates select="ext:node-set($x-component-aaa)" mode="x-slot" />
+              <xsl:apply-templates select="ext:node-set($x-component-petitevue)" mode="x-slot" />
             </xsl:variable>
             <xsl:apply-templates select="ext:node-set($x-component-x-slot)" mode="xalur" />
 
@@ -254,6 +257,33 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- ========= petitevue ========= -->
+
+  <xsl:template match="@*|node()" mode="petitevue">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" mode="petitevue"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="x-component[./script/@petitevue='true']" mode="petitevue">
+    <xsl:copy>
+      <xsl:choose>
+        <xsl:when test="./@v-scope">
+          <xsl:copy-of select="./@*[name()!='v-scope']" />
+          <xsl:attribute name="v-scope"><xsl:call-template name="string-replace-all">
+            <xsl:with-param name="text" select="./@x-component-orig-tag" />
+            <xsl:with-param name="replace">-</xsl:with-param>
+            <xsl:with-param name="by">_</xsl:with-param>
+          </xsl:call-template>(<xsl:value-of select="./@v-scope" />)</xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="./@*" />
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="node()" mode="petitevue"/>
+    </xsl:copy>
+  </xsl:template>
+
   <!-- ========= Slots handling ========= -->
 
   <xsl:template match="@*|node()" mode="x-slot">
@@ -370,7 +400,11 @@
 
       <xsl:variable name="js-def">
         window.xsalt={components:{}};
-        <xsl:if test="//x-component/script[@autoselect] or //x-component/custom-elements[@xslt-import-url]">
+        <xsl:if test="
+          //x-component/script[@autoselect] or
+          //x-component/custom-elements[@xslt-import-url] or
+          //x-component/script[@petitevue='true']
+        ">
         window.xsalt.defComponent=function(tag,node){
           if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}};
           Array.prototype.slice.call(
@@ -452,7 +486,11 @@
         <!-- \customelement -->
       </xsl:variable>
 
-      <xsl:if test="//x-component/script[@autoselect] or //x-component/custom-elements[@xslt-import-url]">
+      <xsl:if test="
+        //x-component/script[@autoselect] or
+        //x-component/custom-elements[@xslt-import-url] or
+        //x-component/script[@petitevue='true']
+      ">
         <xsl:element name="script" namespace=""
           ><xsl:value-of select="normalize-space($js-def)"
         /></xsl:element>
@@ -501,6 +539,17 @@
                   </xsl:when>
                   <xsl:otherwise>null</xsl:otherwise>
                 </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(c){window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].instances[c.id].$this=window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init.call(c)});</xsl:when>
+              <xsl:when test="./@petitevue='true'">
+                window.xsalt.defComponent('<xsl:value-of select="./@x-component-orig-tag"/>',null);
+                window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init=function(props){<xsl:value-of select="." />};
+                window.PetiteVue.createApp({
+                  <xsl:call-template name="string-replace-all">
+                    <xsl:with-param name="text" select="./@x-component-orig-tag" />
+                    <xsl:with-param name="replace">-</xsl:with-param>
+                    <xsl:with-param name="by">_</xsl:with-param>
+                  </xsl:call-template>:window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init
+                }).mount()
+              </xsl:when>
               <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
               <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
             </xsl:choose>
