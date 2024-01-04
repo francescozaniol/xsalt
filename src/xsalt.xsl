@@ -7,6 +7,7 @@
 
   <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" omit-xml-declaration="yes" />
   <xsl:strip-space elements="*" />
+  <xsl:preserve-space elements="pre code" />
 
   <!-- ========= x-store ========= -->
 
