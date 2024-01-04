@@ -368,29 +368,38 @@
       </xsl:for-each>
 
       <xsl:variable name="js-def">
-        window.xsalt={componentInit:{}};
-        <xsl:if test="//x-component/script[@autoselect]">
-        window.xsalt.autoselect=function(tag,node,wrapper){
-          var r=[];
+        window.xsalt={components:{}};
+        <xsl:if test="//x-component/script[@autoselect] or //x-component/custom-elements[@xslt-import-url]">
+        window.xsalt.defComponent=function(tag,node){
+          if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}};
           Array.prototype.slice.call(
             node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]')
           ).forEach(function(n,i){
-            r[i]={};
-            r[i].$refs={};
+            window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')};
+          });
+        };
+        </xsl:if>
+        <xsl:if test="//x-component/script[@autoselect]">
+        window.xsalt.autoselect=function(tag,node,wrapper){
+          var c;
+          Array.prototype.slice.call(
+            node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]')
+          ).forEach(function(n,i){
+            c=window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')];
             var els=Array.prototype.slice.call(n.querySelectorAll('[data-x-'+n.getAttribute('data-x-'+tag+'-id')+'][class*="$"]'));
             els.push(n);
             els.forEach(function(e){
               Array.prototype.slice.call(e.classList).forEach(function(className){
                 if(className.indexOf('$')!==0)return;
                 var el=className.slice(1);
-                if(!r[i].$refs[el])r[i].$refs[el]=e;
-                else if(Array.isArray(r[i].$refs[el]))r[i].$refs[el].push(e);
-                else r[i].$refs[el]=[r[i].$refs[el],e];
+                if(!c.refs[el])c.refs[el]=e;
+                else if(Array.isArray(c.refs[el]))c.refs[el].push(e);
+                else c.refs[el]=[c.refs[el],e];
               });
             });
-            if(wrapper)for(var e in r[i].$refs)r[i].$refs[e]=wrapper(r[i].$refs[e]);
+            if(wrapper)for(var e in c.refs)c.refs[e]=wrapper(c.refs[e]);
           });
-          return r;
+          return node?[c]:Object.values(window.xsalt.components[tag].instances);
         };
         </xsl:if>
         <!-- customelement -->
@@ -429,11 +438,12 @@
               n.removeAttribute('data-x-'+xId);
               n.setAttribute('data-x-'+'id-ce-'+window.xsalt.customElements.id,'');
             });
-            window.xsalt.componentInit[tag]&amp;&amp;window.xsalt.autoselect(
+            window.xsalt.defComponent(tag);
+            window.xsalt.autoselect(
               tag,
               node,
-              window.xsalt.componentInit[tag].wrapper
-            ).forEach(function(e){window.xsalt.componentInit[tag].call(e);});
+              window.xsalt.components[tag].wrapper
+            ).forEach(function(c){window.xsalt.components[tag].init.call(c)});
           }})}
         };
         window.xsalt.importXsl('<xsl:value-of select="//x-component/custom-elements/@xslt-import-url" />');
@@ -478,7 +488,7 @@
           ]">
             <xsl:sort select="position()" data-type="number" order="descending" />
             <xsl:choose>
-              <xsl:when test="starts-with(./@autoselect, 'true')">window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>']=function(){var $refs=this.$refs;<xsl:value-of select="." />};window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
+              <xsl:when test="starts-with(./@autoselect, 'true')">window.xsalt.defComponent('<xsl:value-of select="./@x-component-orig-tag"/>',null);window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init=function(){var $refs=this.refs;<xsl:value-of select="." />};window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper=<xsl:choose>
                   <xsl:when test="starts-with(./@autoselect, 'true|')">
                     <xsl:variable name="wrapper">
                       <xsl:call-template name="string-replace-all">
@@ -489,7 +499,7 @@
                     </xsl:variable><xsl:value-of select="$wrapper"/>
                   </xsl:when>
                   <xsl:otherwise>null</xsl:otherwise>
-                </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(e){window.xsalt.componentInit['<xsl:value-of select="./@x-component-orig-tag"/>'].call(e)});</xsl:when>
+                </xsl:choose>;window.xsalt.autoselect('<xsl:value-of select="./@x-component-orig-tag"/>',null,window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].wrapper).forEach(function(c){window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].instances[c.id].$this=window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init.call(c)});</xsl:when>
               <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
               <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
             </xsl:choose>
