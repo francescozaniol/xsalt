@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL | E_STRICT);
-
 include '../tools/php/Xsalt.php';
 
 $dirs = [
@@ -16,6 +13,7 @@ $dirs = [
   'autoselect',
   'custom-elements',
   'petite-vue',
+  'petite-vue-components',
 ];
 
 foreach ($dirs as $dir) {
