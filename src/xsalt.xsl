@@ -407,6 +407,9 @@
           });
         };
         </xsl:if>
+        <xsl:if test="//x-component/script[@petitevue='true']">
+        window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};
+        </xsl:if>
         <xsl:if test="//x-component/script[@autoselect]">
         window.xsalt.autoselect=function(tag,node,wrapper){
           var c;
@@ -535,13 +538,11 @@
               <xsl:when test="./@petitevue='true'">
                 window.xsalt.defComponent('<xsl:value-of select="./@x-component-orig-tag"/>',null);
                 window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init=function(props){<xsl:value-of select="." />};
-                window.PetiteVue.createApp({
-                  <xsl:call-template name="string-replace-all">
+                window.xsalt.petitevue.components.<xsl:call-template name="string-replace-all">
                     <xsl:with-param name="text" select="./@x-component-orig-tag" />
                     <xsl:with-param name="replace">-</xsl:with-param>
                     <xsl:with-param name="by">_</xsl:with-param>
-                  </xsl:call-template>:window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init
-                }).mount()
+                  </xsl:call-template>=window.xsalt.components['<xsl:value-of select="./@x-component-orig-tag"/>'].init;
               </xsl:when>
               <xsl:when test="./@scoped='false'"><xsl:value-of select="." /></xsl:when>
               <xsl:otherwise>(function(){<xsl:value-of select="." />}());</xsl:otherwise>
@@ -550,6 +551,7 @@
         </xsl:element>
       </xsl:if>
 
+      <xsl:if test="//x-component/script[@petitevue='true']"><xsl:element name="script" namespace="">window.xsalt.petitevue.mount()</xsl:element></xsl:if>
 
     </xsl:copy>
   </xsl:template>

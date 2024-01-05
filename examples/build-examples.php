@@ -14,6 +14,7 @@ $dirs = [
   'custom-elements',
   'petite-vue',
   'petite-vue-components',
+  'petite-vue-custom-elements',
 ];
 
 foreach ($dirs as $dir) {

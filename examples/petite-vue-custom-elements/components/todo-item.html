@@ -1,0 +1,20 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="todo-item" mode="x-component">
+
+  <template>
+    <div ref="todo">
+      <x-slot />
+      <button v-on..click="remove" type="button">Remove</button>
+    </div>
+  </template>
+
+  <script petitevue="true">
+    return {
+      remove() {
+        this.$refs.todo.remove();
+      },
+    }
+  </script>
+
+</xsl:template>
+</xsl:transform>

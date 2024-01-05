@@ -1,3 +1,3 @@
-# petite-vue integration - Components
+# Petite Vue - Components
 
 TODO
