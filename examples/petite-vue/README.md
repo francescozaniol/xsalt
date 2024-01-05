@@ -17,24 +17,17 @@ As an example, take a look at [toggle-button](./components/toggle-button.html):
 
   <template autobem="true">
     <button type="button"
-      v-on..click="pressed = !pressed"
-      v-bind..aria-pressed="Boolean(pressed)"
-      v-scope="{{ pressed: false }}"
+      v-on..click="count++"
+      v-scope="{{ count: 0 }}"
     >
-      <x-slot />
+      {{ count }}
     </button>
   </template>
-
-  <style autobem="true">
-    .\$[aria-pressed=true] {
-      outline: 3px solid red;
-    }
-  </style>
 
 </xsl:template>
 ```
 
-Note the usage of `v-on..` and `v-bind..`. Such attributes will be transformed by xsalt into `v-on:` and `v-bind:`. Also, note that it is mandatory to use `v-on..click` instead of `@click`.
+Note the usage of `v-on..`. Such attribute will be transformed by xsalt into `v-on:`. Also, note that it is mandatory to use `v-on..click` instead of `@click`.
 
 Finally, note the usage of double braces inside `v-scope`.
 

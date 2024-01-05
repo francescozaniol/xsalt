@@ -1,0 +1,14 @@
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="counter-button" mode="x-component">
+
+  <template autobem="true">
+    <button type="button"
+      v-on..click="count++"
+      v-scope="{{ count: 0 }}"
+    >
+      {{ count }}
+    </button>
+  </template>
+
+</xsl:template>
+</xsl:transform>
