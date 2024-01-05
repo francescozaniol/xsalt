@@ -7,7 +7,7 @@
 <body>
 <button xmlns:v-on="v-on" type="button" v-on:click="inc" v-scope="counter_button({ count: 0 })">
       {{ count }}
-    </button><script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); };</script><script>
+    </button><script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};</script><script>
                 window.xsalt.defComponent('counter-button',null);
                 window.xsalt.components['counter-button'].init=function(props){/**/
     return {
@@ -17,9 +17,7 @@
       },
     }
   /**/};
-                window.PetiteVue.createApp({
-                  counter_button:window.xsalt.components['counter-button'].init
-                }).mount()
-              </script>
+                window.xsalt.petitevue.components.counter_button=window.xsalt.components['counter-button'].init;
+              </script><script>window.xsalt.petitevue.mount()</script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style></style>
+</head>
+<body>
+<div v-scope="todo_app()">
+<form xmlns:v-on="v-on" v-on:submit.prevent="addTodo">
+<input type="text" ref="text"><button type="submit">Add todo</button>
+</form>
+<div><div ref="todo" v-for="todo in todos" v-scope="todo_item()">{{ todo }}<button xmlns:v-on="v-on" v-on:click="remove" type="button">Remove</button>
+</div></div>
+</div>
+<script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}}; window.xsalt.importXsl=function(url){ return new Promise(function(res,rej){ var xhr=new XMLHttpRequest(); xhr.open('GET',url,true); xhr.onload=function(){ var xsl=xhr.responseXML; window.xsalt.XSLTProcessor=new XSLTProcessor(); window.xsalt.XSLTProcessor.importStylesheet(xsl); xsl=document.implementation.createDocument('','',null); window.xsalt.DOMParser=new DOMParser(); window.xsalt.customElements.define(['todo-item',]); if(xhr.status>=200&&xhr.status<300)res(xhr.response); else rej({status:xhr.status,statusText:xhr.statusText}); }; xhr.onerror=function(){rej({status:xhr.status,statusText:xhr.statusText})}; xhr.send(null); }); }; window.xsalt.customElements={ id:0, define:function(tag){ if(Array.isArray(tag)){tag.forEach(window.xsalt.customElements.define);return;} if(window.customElements.get(tag))return; window.customElements.define(tag,class extends HTMLElement{constructor(){super(); var doc=window.xsalt.DOMParser.parseFromString(this.outerHTML,'application/xml'); var fragment=window.xsalt.XSLTProcessor.transformToFragment(doc,document); var node=fragment.firstElementChild; this.replaceWith(node); const xId=node.getAttribute('data-x-'+tag+'-id'); node.setAttribute('data-x-'+tag+'-id','id-ce-'+(++window.xsalt.customElements.id)); node.querySelectorAll('[data-x-'+xId+']').forEach(function(n){ n.removeAttribute('data-x-'+xId); n.setAttribute('data-x-'+'id-ce-'+window.xsalt.customElements.id,''); }); window.xsalt.defComponent(tag); window.xsalt.autoselect( tag, node, window.xsalt.components[tag].wrapper ).forEach(function(c){window.xsalt.components[tag].init.call(c)}); }})} }; window.xsalt.importXsl('./includes.xsl');</script><script>
+                window.xsalt.defComponent('todo-app',null);
+                window.xsalt.components['todo-app'].init=function(props){
+    return {
+      todos: ['Buy milk', 'Buy bread'],
+      addTodo() {
+        this.todos.push(this.$refs.text.value);
+      },
+    }
+  };
+                window.xsalt.petitevue.components.todo_app=window.xsalt.components['todo-app'].init;
+              
+                window.xsalt.defComponent('todo-item',null);
+                window.xsalt.components['todo-item'].init=function(props){
+    return {
+      remove() {
+        this.$refs.todo.remove();
+      },
+    }
+  };
+                window.xsalt.petitevue.components.todo_item=window.xsalt.components['todo-item'].init;
+              </script><script>window.xsalt.petitevue.mount()</script>
+</body>
+</html>
