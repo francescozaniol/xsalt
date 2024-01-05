@@ -267,19 +267,12 @@
 
   <xsl:template match="x-component[./script/@petitevue='true']" mode="petitevue">
     <xsl:copy>
-      <xsl:choose>
-        <xsl:when test="./@v-scope">
-          <xsl:copy-of select="./@*[name()!='v-scope']" />
-          <xsl:attribute name="v-scope"><xsl:call-template name="string-replace-all">
-            <xsl:with-param name="text" select="./@x-component-orig-tag" />
-            <xsl:with-param name="replace">-</xsl:with-param>
-            <xsl:with-param name="by">_</xsl:with-param>
-          </xsl:call-template>(<xsl:value-of select="./@v-scope" />)</xsl:attribute>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:copy-of select="./@*" />
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:copy-of select="./@*[name()!='v-scope']" />
+      <xsl:attribute name="v-scope"><xsl:call-template name="string-replace-all">
+        <xsl:with-param name="text" select="./@x-component-orig-tag" />
+        <xsl:with-param name="replace">-</xsl:with-param>
+        <xsl:with-param name="by">_</xsl:with-param>
+      </xsl:call-template>(<xsl:if test="./@v-scope"><xsl:value-of select="./@v-scope" /></xsl:if>)</xsl:attribute>
       <xsl:apply-templates select="node()" mode="petitevue"/>
     </xsl:copy>
   </xsl:template>
