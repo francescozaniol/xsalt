@@ -505,6 +505,14 @@
         <xsl:element name="script" namespace="">if(!window.xsalt)window.xsalt={};window.xsalt.xStore=(new DOMParser()).parseFromString(window.document.getElementById('xsalt-x-store').innerHTML,'text/xml');</xsl:element>
       </xsl:if>
 
+      <xsl:for-each select="//x-component/insertAdjacentHTML[
+        @tagName='body' and
+        @position='beforeend' and
+        not(@x-component-orig-tag=preceding::insertAdjacentHTML
+          [@tagName='body' and @position='beforeend']/@x-component-orig-tag
+        )
+      ]"><xsl:copy-of select="./*" /></xsl:for-each>
+
       <xsl:if test="//x-component/script">
         <xsl:element name="script" namespace="">
           <xsl:for-each select="//x-component/script[
@@ -542,13 +550,6 @@
         </xsl:element>
       </xsl:if>
 
-      <xsl:for-each select="//x-component/insertAdjacentHTML[
-        @tagName='body' and
-        @position='beforeend' and
-        not(@x-component-orig-tag=preceding::insertAdjacentHTML
-          [@tagName='body' and @position='beforeend']/@x-component-orig-tag
-        )
-      ]"><xsl:copy-of select="./*" /></xsl:for-each>
 
     </xsl:copy>
   </xsl:template>
