@@ -1,4 +1,4 @@
-# petite-vue integration
+# Petite Vue - Basics
 
 "[petite-vue](https://github.com/vuejs/petite-vue) is an alternative distribution of Vue optimized for progressive enhancement."
 
