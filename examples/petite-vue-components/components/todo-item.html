@@ -11,7 +11,7 @@
   <script petite-vue="true">
     return {
       remove() {
-        this.$refs.todo.remove();
+        this.$refs.todo.dispatchEvent(new CustomEvent('removed'));
       },
     }
   </script>

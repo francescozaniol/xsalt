@@ -1,6 +1,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:include href="./../../src/xsalt.xsl"/>
-  <xsl:include href="./components/counter-button.html"/>
+  <xsl:include href="./components/todo-app.html"/>
+  <xsl:include href="./components/todo-item.html"/>
 
 </xsl:transform>

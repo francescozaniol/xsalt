@@ -10,21 +10,20 @@
       </form>
 
       <div>
-        <todo-item v-for="todo in todos">{{ todo }}</todo-item>
+        <todo-item v-for="(todo, i) in todos" v-on..removed="removeTodo(i)">{{ todo }}</todo-item>
       </div>
 
     </div>
   </template>
-
-  <custom-elements xslt-import-url="./includes.xsl">
-    <todo-item />
-  </custom-elements>
 
   <script petite-vue="true">
     return {
       todos: ['Buy milk', 'Buy bread'],
       addTodo() {
         this.todos.push(this.$refs.text.value);
+      },
+      removeTodo(index) {
+        this.todos.splice(index, 1);
       },
     }
   </script>
