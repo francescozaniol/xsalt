@@ -395,7 +395,7 @@
         window.xsalt={components:{}};
         <xsl:if test="
           //x-component/script[@autoselect] or
-          //x-component/custom-elements[@xslt-import-url] or
+          //x-custom-elements[@xslt-import-url] or
           //x-component/script[@petite-vue='true']
         ">
         window.xsalt.defComponent=function(tag,node){
@@ -434,7 +434,7 @@
         };
         </xsl:if>
         <!-- customelement -->
-        <xsl:if test="//x-component/custom-elements[@xslt-import-url]">
+        <xsl:if test="//x-custom-elements[@xslt-import-url]">
         window.xsalt.importXsl=function(url){
           return new Promise(function(res,rej){
             var xhr=new XMLHttpRequest();
@@ -445,7 +445,7 @@
               window.xsalt.XSLTProcessor.importStylesheet(xsl);
               xsl=document.implementation.createDocument('','',null);
               window.xsalt.DOMParser=new DOMParser();
-              window.xsalt.customElements.define([<xsl:for-each select="//x-component/custom-elements/*"><xsl:sort select="position()" data-type="number" order="descending" />'<xsl:value-of select="./@x-component-orig-tag" />',</xsl:for-each>]);
+              window.xsalt.customElements.define([<xsl:for-each select="//x-custom-elements/*"><xsl:sort select="position()" data-type="number" order="descending" />'<xsl:value-of select="./@x-component-orig-tag" />',</xsl:for-each>]);
               if(xhr.status>=200&amp;&amp;xhr.status&lt;300)res(xhr.response);
               else rej({status:xhr.status,statusText:xhr.statusText});
             };
@@ -477,14 +477,14 @@
             ).forEach(function(c){window.xsalt.components[tag].init.call(c)});
           }})}
         };
-        window.xsalt.importXsl('<xsl:value-of select="//x-component/custom-elements/@xslt-import-url" />');
+        window.xsalt.importXsl('<xsl:value-of select="//x-custom-elements/@xslt-import-url" />');
         </xsl:if>
         <!-- \customelement -->
       </xsl:variable>
 
       <xsl:if test="
         //x-component/script[@autoselect] or
-        //x-component/custom-elements[@xslt-import-url] or
+        //x-custom-elements[@xslt-import-url] or
         //x-component/script[@petite-vue='true']
       ">
         <xsl:element name="script" namespace=""
@@ -656,6 +656,7 @@
   <xsl:template match="x-component/template[@x-component-orig-tag]" mode="ddd">
     <xsl:apply-templates mode="ddd"/>
   </xsl:template>
+  <xsl:template match="x-custom-elements" mode="ddd" />
   <xsl:template match="x-component/*[@x-component-orig-tag and name(.)!='template']" mode="ddd" />
   <xsl:template match="//x-slot[.//x-slot-remove]" mode="ddd" />
   <xsl:template match="template[@x-slot]" mode="ddd" />
