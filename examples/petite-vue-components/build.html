@@ -5,19 +5,37 @@
 <style></style>
 </head>
 <body>
-<button xmlns:v-on="v-on" type="button" v-on:click="inc" v-scope="counter_button({ count: 0 })">
-      {{ count }}
-    </button><script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};</script><script>
-                window.xsalt.defComponent('counter-button',null);
-                window.xsalt.components['counter-button'].init=function(props){/**/
+<div v-scope="todo_app()">
+<form xmlns:v-on="v-on" v-on:submit.prevent="addTodo">
+<input type="text" ref="text"><button type="submit">Add todo</button>
+</form>
+<div><div xmlns:v-on="v-on" ref="todo" v-for="(todo, i) in todos" v-on:removed="removeTodo(i)" v-scope="todo_item()">{{ todo }}<button v-on:click="remove" type="button">Remove</button>
+</div></div>
+</div>
+<script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};</script><script>
+                window.xsalt.defComponent('todo-app',null);
+                window.xsalt.components['todo-app'].init=function(props){
     return {
-      count: props.count,
-      inc() {
-        this.count++
+      todos: ['Buy milk', 'Buy bread'],
+      addTodo() {
+        this.todos.push(this.$refs.text.value);
+      },
+      removeTodo(index) {
+        this.todos.splice(index, 1);
       },
     }
-  /**/};
-                window.xsalt.petitevue.components.counter_button=window.xsalt.components['counter-button'].init;
+  };
+                window.xsalt.petitevue.components.todo_app=window.xsalt.components['todo-app'].init;
+              
+                window.xsalt.defComponent('todo-item',null);
+                window.xsalt.components['todo-item'].init=function(props){
+    return {
+      remove() {
+        this.$refs.todo.dispatchEvent(new CustomEvent('removed'));
+      },
+    }
+  };
+                window.xsalt.petitevue.components.todo_item=window.xsalt.components['todo-item'].init;
               </script><script>window.xsalt.petitevue.mount()</script>
 </body>
 </html>
