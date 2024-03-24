@@ -1,4 +1,4 @@
-# Petite Vue - Components
+# petite-vue - Components
 
 Xsalt natively integrates the definition of petite-vue's components. Simply add `petite-vue="true"` to the `script` tag.
 
@@ -61,6 +61,10 @@ For completion, take a look at [todo-item](./components/todo-item.html):
 
 </xsl:template>
 ```
+
+## Demo
+
+See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue-components/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue-components/build.html).
 
 ## Read next
 
