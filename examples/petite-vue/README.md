@@ -1,4 +1,4 @@
-# Petite Vue - Basics
+# petite-vue - Basics
 
 "[petite-vue](https://github.com/vuejs/petite-vue) is an alternative distribution of Vue optimized for progressive enhancement."
 
@@ -10,10 +10,10 @@ Using petite-vue in Xsalt components comes with some caveats:
   - An attribute starting with `:` is the shorthand for `v-bind:` and cannot be used. In this case use `v-bind..key` instead of `:key`..
 - Lastly, the usage of `{` and `}` inside attributes is reserved in XSLT, therefore these should be escaped with double braces (`{{` and `}}`).
 
-As an example, take a look at [toggle-button](./components/toggle-button.html):
+As an example, take a look at [counter-button](./components/counter-button.html):
 
 ```html
-<xsl:template match="toggle-button" mode="x-component">
+<xsl:template match="counter-button" mode="x-component">
 
   <template autobem="true">
     <button type="button"
@@ -27,7 +27,7 @@ As an example, take a look at [toggle-button](./components/toggle-button.html):
 </xsl:template>
 ```
 
-Note the usage of `v-on..`. Such attribute will be transformed by xsalt into `v-on:`. Also, note that it is mandatory to use `v-on..click` instead of `@click`.
+Note the usage of `v-on..`. Such attribute will be transformed by Xsalt into `v-on:`. Also, note that it is mandatory to use `v-on..click` instead of `@click`.
 
 Finally, note the usage of double braces inside `v-scope`.
 
@@ -39,6 +39,8 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 
 AlpineJS works fine for "static" builds/renders. However, for live XSLT transformations, it can be buggy.
 
+Also, Xsalt comes with petite-vue's components integration. 
+
 ## Read next
 
-[Xsalt.php](../../tools/php)
+[petite-vue components](../petite-vue-components)
