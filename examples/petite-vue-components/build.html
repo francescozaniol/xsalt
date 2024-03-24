@@ -12,7 +12,7 @@
 <div><div xmlns:v-on="v-on" ref="todo" v-for="(todo, i) in todos" v-on:removed="removeTodo(i)" v-scope="todo_item()">{{ todo }}<button v-on:click="remove" type="button">Remove</button>
 </div></div>
 </div>
-<script src="https://unpkg.com/petite-vue" init=""></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};</script><script>
+<script src="https://unpkg.com/petite-vue"></script><script>window.xsalt={components:{}}; window.xsalt.defComponent=function(tag,node){ if(!window.xsalt.components[tag])window.xsalt.components[tag]={instances:{}}; Array.prototype.slice.call( node?[node]:document.querySelectorAll('[data-x-'+tag+'-id]') ).forEach(function(n,i){ window.xsalt.components[tag].instances[n.getAttribute('data-x-'+tag+'-id')]={refs:{},tag:tag,id:n.getAttribute('data-x-'+tag+'-id')}; }); }; window.xsalt.petitevue={components:{},mount(){window.PetiteVue.createApp(window.xsalt.petitevue.components).mount()}};</script><script>
                 window.xsalt.defComponent('todo-app',null);
                 window.xsalt.components['todo-app'].init=function(props){
     return {
