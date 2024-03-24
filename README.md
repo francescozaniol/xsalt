@@ -74,6 +74,7 @@ See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/exampl
 - [X-store](./examples/x-store): Global data store.
 - [Custom elements](./examples/custom-elements): Live custom elements from Xsalt components.
 - [petite-vue integration](./examples/petite-vue): Use petite-vue in Xsalt components.
+- [petite-vue components](./examples/petite-vue-components): petite-vue components integration.
 - [Xsalt.php](./tools/php): A simple PHP class to render or build a page.
 
 ## Installation
