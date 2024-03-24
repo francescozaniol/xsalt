@@ -31,6 +31,22 @@ Note the usage of `v-on..`. Such attribute will be transformed by Xsalt into `v-
 
 Finally, note the usage of double braces inside `v-scope`.
 
+## petite-vue loading
+
+Xsalt does not automatically load the library for you, you will need to include it manually on the page. For an example of how to load it from the CDN, take a look at [index.xhtml](./index.xhtml):
+
+```html
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
+<html>
+  <head />
+  <body>
+    <counter-button />
+    <script src="https://unpkg.com/petite-vue" init=""></script>
+  </body>
+</html>
+```
+
 ## Demo
 
 See [live XSLT demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/index.xhtml) or [static build demo](https://raw.githack.com/francescozaniol/xsalt/master/examples/petite-vue/build.html).
