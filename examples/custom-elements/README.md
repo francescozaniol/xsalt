@@ -22,10 +22,6 @@ For example, consider this simple [todo-app](./components/todo-app.html):
     </div>
   </template>
 
-  <custom-elements xslt-import-url="./includes.xsl">
-    <todo-item />
-  </custom-elements>
-
   <script autoselect="true">/*<![CDATA[*/
     $refs.form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -38,11 +34,27 @@ For example, consider this simple [todo-app](./components/todo-app.html):
 </xsl:template>
 ```
 
-The `custom-elements` tag should contain a list of self-closing tags that will be defined as custom elements. Note: the tags inside `custom-elements` will not be transformed; their porpuse is declarative only.
+Note how, when adding a new todo, a `<todo-item>` is injected directly as a custom element (see `insertAdjacentHTML`).
 
-`custom-elements` must also define the `xslt-import-url` attribute, which will be used by JavaScript to import the transformations. Important: this URL is relative to the document's URL, not a path relative to the current file.
+Xsalt allows the definition of custom elements via `x-custom-elements`. In this example, such definition is included in [index.xhtml](./index.xhtml):
+```html
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="./includes.xsl" ?>
+<html>
+<head />
+<body>
+  <todo-app />
 
-Note how, when adding a new todo (see `script`), a `<todo-item>` is injected directly into the DOM because it's defined as a custom element.
+  <x-custom-elements xslt-import-url="./includes.xsl">
+    <todo-item />
+  </x-custom-elements>
+</body>
+</html>
+```
+
+The `x-custom-elements` tag should contain a list of self-closing tags. Note: these tags will not be included in the output transformation, their porpuse is declarative only.
+
+Additionally, the `x-custom-elements` tag must define the `xslt-import-url` attribute. Such URL, will be used to fetch the XSLT includes. Important note: this URL is relative to the document's URL, it is not a path relative to the current file.
 
 ## Demo
 
